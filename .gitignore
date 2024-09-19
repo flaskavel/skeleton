@@ -1,0 +1,8 @@
+/public/storage
+/storage/*.key
+/venv
+.env
+.env.example
+/.fleet
+/.idea
+/.vscode

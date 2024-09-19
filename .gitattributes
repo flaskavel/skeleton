@@ -1,0 +1,6 @@
+* text=auto eol=lf
+
+*.jinja.py diff=html
+*.css diff=css
+*.html diff=html
+*.md diff=markdown
