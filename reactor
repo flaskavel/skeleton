@@ -1,0 +1,8 @@
+# Importar el archivo de comandos personalizados para registrar los comandos
+import app.Console.Commands.WaterCommand
+
+from flaskavel.lab.beaker.commands.reactor import reactor
+
+if __name__ == "__main__":
+    # Ejecutar un comando registrado automáticamente
+    reactor.call('app:water')
