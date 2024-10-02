@@ -6,111 +6,109 @@ from flaskavel.lab.beaker.console.command import Command
 class WaterCommand(Command):
 
     """
-    Command to display the technical components of H2O (water) and demonstrate the use of various console methods.
-
-    This command inherits from the base `Command` class, allowing access to console output methods.
-    It showcases how to define command-line arguments and process them for output.
-
+    Flaskavel Example Command
     Attributes:
-        signature (str): A unique signature for the command, used to identify it in the CLI.
-        description (str): A brief description of what the command does.
+        signature (str): Unique name for the command to register.
+        description (str): Brief description of its functionality.
     """
 
-    signature = 'app:water'
-    description = 'Print the technical components of H2O and demonstrate various console methods.'
+    signature = 'app:cubic'
+    description = 'Example usage of Flaskavel CLI, calculates the cubic meters of an element.'
 
     def arguments(self):
         """
-        Defines the command-line arguments for the WaterCommand.
-
-        Returns:
-            list: A list of tuples where each tuple contains:
-                - A string representing the argument name (e.g., '--framework').
-                - A dictionary of options for that argument, including:
-                    - 'type': The data type of the argument (e.g., str).
-                    - 'required': A boolean indicating if the argument is mandatory.
-                    - 'help': A brief description of the argument's purpose.
+        These are the expected arguments when calling the command
         """
-
         return [
-            ('--framework', {'type': str, 'required': True, 'help': 'Name of the Framework'}),
-            ('--version', {'type': int, 'required': True, 'help': 'Version number'})
+            ('--height', {'type': int, 'required': True, 'help': 'Height of the area'}),
+            ('--length', {'type': int, 'required': True, 'help': 'Length of the area'}),
+            ('--width', {'type': int, 'required': True, 'help': 'Width of the area'}),
+            ('--name', {'type': str, 'required': False, 'help': 'Name of the measured object'})
         ]
 
     def handle(self) -> None:
 
         """
-        Executes the command logic.
-
-        This method is called when the command is executed from the command line.
-        It reads the command-line arguments defined in the `arguments()` method and outputs
-        the framework name and version number using the console's informational methods.
-
-        Raises:
-            ValueError: If the required arguments are not provided.
+        Command execution logic
         """
 
-        # Read Arguments
-        framework = self.argument('framework')
-        version = self.argument('version')
-        time.sleep(5)
-        self.line(F"Name: {framework}, Version: {version}")
+        # Read the arguments
+        height = self.argument('height')
+        length = self.argument('length')
+        width = self.argument('width')
+        name = self.argument('name', 'Cube')
 
-        # # Informative message
-        # self.info("Starting the water component analysis...")
+        # Print a line
+        self.line(f"Cubic Meters Calculation: Object Name: {name}, Height: {height} - Width: {width} - Length: {length}")
 
-        # # Error message (simulated example)
-        # self.error("This is a simulated error message.")
+        # Print an informational message
+        self.info(f"Dimensions: Height: {height} - Width: {width} - Length: {length}")
 
-        # # Failure message (simulated example)
-        # self.fail("This is a simulated failure message.")
+        # Ask how many objects
+        quantity = self.ask("How many objects are there?")
 
-        # # Ask for user's name and greet them
-        # name = self.ask("What is your name?")
-        # self.info(f"Hello, {name}!")
+        # Ensure it's numeric
+        if not str(quantity).isnumeric():
+            # Print an error message
+            self.error("The value is not numeric.")
+            self.exit()
 
-        # # Confirm if the user is sure
-        # result = self.confirm("Are you sure you want to proceed?")
-        # self.info(f"User confirmed: {result}")
+        # Request confirmation
+        result = self.confirm("Would you like to know the mathematical formula?")
+        if result:
+            self.line(f"fx = ({height}*{width}*{length})*{quantity}")
 
-        # # Ask for a secret (like a password)
-        # password = self.secret("Please enter a secret password:")
-        # self.info(f"Password entered: {password}")
+        # Ask for secret input
+        secret = self.secret("To ensure you're not a robot, enter the value [1234]")
+        if str(secret).strip() != "1234":
+            # Print a failure message
+            self.fail("Robot validation failed.")
+            self.exit()
 
-        # # Anticipate input (autocomplete)
-        # component = self.anticipate(
-        #     question='What is the main component of water?',
-        #     options=['Hydrogen', 'Oxygen', 'Nitrogen', 'Carbon'],
-        #     default='Hydrogen'
-        # )
-        # self.info(f"Anticipated component: {component}")
+        # Anticipate input (autocomplete)
+        anticipate_option = self.anticipate(
+            question='What state of matter is the object in:',
+            options=['Solid', 'Liquid', 'Gas', 'Plasma'],
+            default='Solid'
+        )
+        self.line(f"Object state: {anticipate_option}")
 
-        # # Choice from a list
-        # choice = self.choice('Choose the form of water:', ['liquid', 'ice', 'steam'])
-        # self.info(f"Chosen form of water: {choice}")
+        # Print a newline
+        self.newLine()
 
-        # # Print a line of text
-        # self.line("Processing complete. Here's a summary:")
+        # Choose from a list
+        measurement = self.choice('In which units are the dimensions:', ['Meters', 'Inches', 'Centimeters'])
 
-        # # Print multiple new lines for clarity
-        # self.newLine(2)
+        # Print multiple newlines
+        self.newLine(2)
 
-        # # Print a detailed table
-        # self.table(
-        #     ['Component', 'Quantity'],
-        #     [['Hydrogen', '2 atoms'], ['Oxygen', '1 atom']]
-        # )
+        # Generate a table with supplied data
+        self.table(
+            ['Concept', 'Value'],
+            [
+                ['Object Name', name],
+                ['Length', length],
+                ['Width', width],
+                ['Quantity', quantity],
+                ['Measurement Unit', measurement],
+            ]
+        )
 
-        # # Create and use a progress bar
-        # bar = self.createProgressBar(total=100, width=100, inline=False)
-        # bar.start()
+        # Print a newline
+        self.newLine()
 
-        # # Simulate progress
-        # for i in range(0, 101, 10):
-        #     time.sleep(1)  # Simulate work
-        #     bar.advance(10)
+        # Generate a progress bar simulating the process
+        bar = self.createProgressBar(total=100, width=100, inline=False)
+        bar.start()
 
-        # bar.finish()
+        # Simulate progress
+        for i in range(3):
+            time.sleep(1)
+            bar.advance(25)
 
-        # # Final message
-        # self.info("Technical components of H2O (water) are: 2 hydrogen atoms and 1 oxygen atom.")
+        # Finish the progress bar
+        bar.finish()
+
+        # Final message
+        volume = (int(height) * int(width) * int(length)) * int(quantity)
+        self.info(f"The total volume is: {str(volume)} {measurement}")
