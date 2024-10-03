@@ -1,6 +1,6 @@
 * text=auto eol=lf
 
-*.jinja diff=html
+*.jinja.html diff=html
 *.css diff=css
 *.html diff=html
 *.md diff=markdown
