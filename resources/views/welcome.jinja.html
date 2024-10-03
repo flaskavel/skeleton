@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flaskavel - Web Development Laboratory</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body{min-height:100vh;display:flex;flex-direction:column;justify-content:center;background-color:#f0f2f5;font-family:'Poppins',sans-serif;position:relative;overflow:hidden;}.background-svg{position:absolute;top:0;left:0;width:100%;height:100%;z-index:-1;fill:rgba(253,79,60,0.1);}.github-logo{height:24px;transition:transform 0.3s;}.github-logo:hover{transform:scale(1.1);}.github-container:hover{transform:translateY(-5px);}.logo{animation:pulse 2s infinite;}@keyframes pulse{0%,100%{transform:scale(1);}50%{transform:scale(1.05);}}.card{background-color:#1B1F26;border:1px solid #e0e0e0;color:white;padding:20px;border-radius:10px;box-shadow:0px 10px 30px rgba(0,0,0,0.1);transition:transform 0.3s,box-shadow 0.3s;}.card:hover{transform:translateY(-10px);box-shadow:0px 20px 40px rgba(0,0,0,0.15);}.footer:hover{transition:transform 0.3s,box-shadow 0.3s;}.btn-github{display:inline-flex;align-items:center;gap:0.5rem;padding:10px 20px;color:#cd5021;border-radius:5px;transition:background-color 0.3s;}.text-highlight{color:white;}
+    </style>
+</head>
+<body class="text-gray-800">
+    <svg class="background-svg" viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMid slice">
+        <defs>
+            <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#d15624;stop-opacity:1" />
+                <stop offset="100%" style="stop-color:#ffc18a;stop-opacity:0.5" />
+            </linearGradient>
+        </defs>
+        <rect x="0" y="0" width="100%" height="100%" fill="url(#gradient)" />
+        <circle cx="50%" cy="50%" r="300" opacity="0.2" />
+        <circle cx="30%" cy="70%" r="250" opacity="0.15" />
+        <circle cx="80%" cy="30%" r="200" opacity="0.1" />
+    </svg>
+    <div class="text-center max-w-3xl mx-auto p-10 bg-white rounded-lg shadow-2xl border border-[#F2B988] transition-transform transform hover:scale-105 duration-300 relative z-10">
+        <img src="https://avatars.githubusercontent.com/u/181855226?s=200&v=4" alt="Flaskavel Logo" class="mx-auto mb-6 h-32 logo" style="border-radius: 50%;" draggable="false">
+        <h1 class="text-5xl font-bold text-[#000000] mb-4">Welcome to Flaskavel</h1>
+        <p class="text-lg mb-8 text-[#cd5021]">Your Web Development Laboratory</p>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+            <div class="card">
+                <h3 class="text-2xl font-bold mb-4 text-highlight">Simple & Powerful</h3>
+                <p>A framework designed for elegant simplicity and coding power.</p>
+            </div>
+            <div class="card">
+                <h3 class="text-2xl font-bold mb-4 text-highlight">Modular Design</h3>
+                <p>Build your projects with structured modules for easy management.</p>
+            </div>
+        </div>
+        <div class="mt-8 p-6 bg-white rounded-lg shadow-lg card">
+            <h2 class="text-3xl font-bold mb-2 text-[#cd5021]">Discover More on GitHub</h2>
+            <p class="text-gray-600 mb-4">Explore our repository for documentation, examples, and more!</p>
+            <a href="https://github.com/flaskavel" class="btn-github">
+                <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub Logo" class="github-logo" />
+                Visit our GitHub Repository
+            </a>
+        </div>
+    </div>
+    <div class="text-center mt-6 footer">
+        <p class="text-sm text-[#400101]">Version v0.0.1 | Python Version: 3.11+ | License: MIT</p>
+        <p class="text-sm text-[#400101]">A project built by the community, for the community.</p>
+    </div>
+    <script>
+        (function() {
+            console.clear();
+            const style = 'background: #1B1F26; color: #F2B988; font-size: 14px; padding: 6px 12px; border-radius: 4px; margin-bottom: 2px;';
+            console.log('%c Welcome to Flaskavel ', style);
+            console.log('%c Framework: Flaskavel | Version: 0.0.1', style);
+            console.log('%c Python Version: 3.11.10', style);
+        })();
+    </script>
+</body>
+</html>

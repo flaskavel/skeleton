@@ -3,7 +3,7 @@ from flaskavel.lab.beaker.console.reactor import reactor
 from flaskavel.lab.beaker.console.command import Command
 
 @reactor.register
-class WaterCommand(Command):
+class CubicCommand(Command):
 
     """
     Flaskavel Example Command
