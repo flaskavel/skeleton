@@ -1,50 +1,78 @@
+from flaskavel.lab.beaker.iterations.loops import Loops
 from flaskavel.lab.beaker.scheduling.schedule import Schedule
 from flaskavel.lab.nucleus.console.kernel import Kernel as ConsoleKernel
 
 class Kernel(ConsoleKernel):
 
     def schedule(self, schedule: Schedule) -> None:
+        """
+        You can schedule the execution of your commands here based on the predefined options available in Flaskavel.
+        """
 
-        schedule.command('app:cubic', {
-            'height':3,
-            'length':2,
-            'width':1,
-        }).everyMinutes(3)
+        # Schedule the task to run every ten minutes.
+        schedule.command('app:cubic', {'height':3, 'length':2, 'width':1}).everyTenMinutes()
 
-        # schedule.command('app:?').everySecond()                 # Schedule the task to run every second.
-        # schedule.command('app:?').everyTwoSeconds()             # Schedule the task to run every two seconds.
-        # schedule.command('app:?').everyFiveSeconds()            # Schedule the task to run every five seconds.
-        # schedule.command('app:?').everyTenSeconds()             # Schedule the task to run every ten seconds.
-        # schedule.command('app:?').everyFifteenSeconds()         # Schedule the task to run every fifteen seconds.
-        # schedule.command('app:?').everyTwentySeconds()          # Schedule the task to run every twenty seconds.
-        # schedule.command('app:?').everyThirtySeconds()          # Schedule the task to run every thirty seconds.
-        # schedule.command('app:?').everyMinutes(3)               # Schedule the task to run every 3 minutes.
-        # schedule.command('app:?').everyMinute()                 # Schedule the task to run every minute.
-        # schedule.command('app:?').everyTwoMinutes()             # Schedule the task to run every two minutes.
-        # schedule.command('app:?').everyThreeMinutes()           # Schedule the task to run every three minutes.
-        # schedule.command('app:?').everyFourMinutes()            # Schedule the task to run every four minutes.
-        # schedule.command('app:?').everyFiveMinutes()            # Schedule the task to run every five minutes.
-        # schedule.command('app:?').everyTenMinutes()             # Schedule the task to run every ten minutes.
-        # schedule.command('app:?').everyFifteenMinutes()         # Schedule the task to run every fifteen minutes.
-        # schedule.command('app:?').everyThirtyMinutes()          # Schedule the task to run every thirty minutes.
-        # schedule.command('app:?').everyOddHour()                # Schedule the task to run every odd hour.
-        # schedule.command('app:?').everyTwoHours()               # Schedule the task to run every two hours.
-        # schedule.command('app:?').everyThreeHours()             # Schedule the task to run every three hours.
-        # schedule.command('app:?').everyFourHours()              # Schedule the task to run every four hours.
-        # schedule.command('app:?').everySixHours()               # Schedule the task to run every six hours.
-        # schedule.command('app:?').days(4)                       # Schedule the task to run every 4 days.
-        # schedule.command('app:?').daily()                       # Schedule the task to run daily at midnight.
-        # schedule.command('app:?').dailyAt('12:00')              # Schedule the task to run daily at 12:00.
-        # schedule.command('app:?').twiceDaily(1, 13)             # Schedule the task to run at 1:00 and 13:00 daily.
-        # schedule.command('app:?').twiceDailyAt(1, 13, 15)       # Schedule the task to run at 1:15 and 13:15 daily.
-        # schedule.command('app:?').monday()                      # Schedule the task to run every Monday at 00:00.
-        # schedule.command('app:?').tuesday()                     # Schedule the task to run every Tuesday at 00:00.
-        # schedule.command('app:?').wednesday()                   # Schedule the task to run every Wednesday at 00:00.
-        # schedule.command('app:?').thursday()                    # Schedule the task to run every Thursday at 00:00.
-        # schedule.command('app:?').friday()                      # Schedule the task to run every Friday at 00:00.
-        # schedule.command('app:?').saturday()                    # Schedule the task to run every Saturday at 00:00.
-        # schedule.command('app:?').sunday()                      # Schedule the task to run every Sunday at 00:00.
-        # schedule.command('app:?').weekly()                      # Schedule the task to run every Sunday at 00:00.
+        # Examples:
+        # schedule.command('app:?').everySeconds(seconds=7)                                   # Schedule the task to run every  seconds.
+        # schedule.command('app:?').everySecond()                                             # Schedule the task to run every second.
+        # schedule.command('app:?').everyTwoSeconds()                                         # Schedule the task to run every two seconds.
+        # schedule.command('app:?').everyFiveSeconds()                                        # Schedule the task to run every five seconds.
+        # schedule.command('app:?').everyTenSeconds()                                         # Schedule the task to run every ten seconds.
+        # schedule.command('app:?').everyFifteenSeconds()                                     # Schedule the task to run every fifteen seconds.
+        # schedule.command('app:?').everyTwentySeconds()                                      # Schedule the task to run every twenty seconds.
+        # schedule.command('app:?').everyThirtySeconds()                                      # Schedule the task to run every thirty seconds.
+        # schedule.command('app:?').everyMinutes(minutes=7)                                   # Schedule the task to run every 7 minutes.
+        # schedule.command('app:?').everyMinute()                                             # Schedule the task to run every minute.
+        # schedule.command('app:?').everyTwoMinutes()                                         # Schedule the task to run every two minutes.
+        # schedule.command('app:?').everyThreeMinutes()                                       # Schedule the task to run every three minutes.
+        # schedule.command('app:?').everyFourMinutes()                                        # Schedule the task to run every four minutes
+        # schedule.command('app:?').everyFiveMinutes()                                        # Schedule the task to run every five minutes.
+        # schedule.command('app:?').everyTenMinutes()                                         # Schedule the task to run every ten minutes.
+        # schedule.command('app:?').everyFifteenMinutes()                                     # Schedule the task to run every fifteen minutes.
+        # schedule.command('app:?').everyThirtyMinutes()                                      # Schedule the task to run every thirty minutes.
+        # schedule.command('app:?').hours(hours=7)                                            # Schedule the task to run every 7 hours.
+        # schedule.command('app:?').hourly()                                                  # Schedule the task to run every hour.
+        # schedule.command('app:?').hourlyAt(minute=45)                                       # Schedule the task to run hourly at a specific minute.
+        # schedule.command('app:?').everyOddHour(minutes=45)                                  # Schedule the task to run every odd hour.
+        # schedule.command('app:?').everyTwoHours(minutes=45)                                 # Schedule the task to run every two hours.
+        # schedule.command('app:?').everyThreeHours(minutes=45)                               # Schedule the task to run every Three hours.
+        # schedule.command('app:?').everyFourHours(minutes=45)                                # Schedule the task to run Four two hours.
+        # schedule.command('app:?').everySixHours(minutes=45)                                 # Schedule the task to run every two hours
+        # schedule.command('app:?').days(days=3)                                              # Schedule the task to run every 3 days.
+        # schedule.command('app:?').daily()                                                   # Schedule the task to run daily at midnight.
+        # schedule.command('app:?').dailyAt(time:'13:17')                                     # Schedule the task to run daily at a specific time.
+        # schedule.command('app:?').twiceDaily(first_hour=6, second_hour=12)                  # Schedule the task twice a day.
+        # schedule.command('app:?').twiceDailyAt(first_hour=6, second_hour=6, minutes=45)     # Schedule the task twice a day with minutes.
+        # schedule.command('app:?').monday(at='00:00')                                        # Schedule the task to run every monday at 00:00.
+        # schedule.command('app:?').tuesday(at='00:00')                                       # Schedule the task to run every tuesday at 00:00.
+        # schedule.command('app:?').wednesday(at='00:00')                                     # Schedule the task to run every wednesday at 00:00.
+        # schedule.command('app:?').thursday(at='00:00')                                      # Schedule the task to run every thursday at 00:00.
+        # schedule.command('app:?').friday(at='00:00')                                        # Schedule the task to run every friday at 00:00.
+        # schedule.command('app:?').saturday(at='00:00')                                      # Schedule the task to run every saturday at 00:00.
+        # schedule.command('app:?').sunday(at='00:00')                                        # Schedule the task to run every sunday at 00:00.
+        # schedule.command('app:?').weekly()                                                  # Schedule the task to run every sunday at 00:00.
+
+    def loops(self, loop: Loops) -> None:
+        """
+        In certain extreme cases, continuous execution of an action may be required.
+        Instead of scheduling tasks, you can implement a loop to ensure sequential execution,
+        preventing multiple instances of the same command from overlapping.
+
+        Args:
+            loop (Loops): An instance of the Loops class that manages loop execution.
+
+        Usage:
+            - command (str): The name of the command to be executed in a loop. This is a required parameter.
+            - intervals (sleep: int): The required duration in seconds to pause resources before restarting execution.
+            - timer (optional: int): The maximum duration in seconds for loop execution. Once this time is reached, the execution stops.
+            If not defined, the loop will run indefinitely. Use caution to avoid excessive or inefficient consumption of memory and CPU.
+        """
+
+        loop.command('app:clock').intervals(sleep=1, timer=10)
 
     def commands(self) -> None:
+        """
+        If you want to organize your commands in different locations, you can register here where to load them from.
+        """
+
         self.load(__file__, '/Commands')
