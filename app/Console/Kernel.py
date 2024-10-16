@@ -54,18 +54,32 @@ class Kernel(ConsoleKernel):
 
     def loops(self, loop: Loops) -> None:
         """
-        In certain extreme cases, continuous execution of an action may be required.
-        Instead of scheduling tasks, you can implement a loop to ensure sequential execution,
-        preventing multiple instances of the same command from overlapping.
+        Manages continuous execution of a command in a loop, ensuring sequential processing
+        to prevent multiple instances of the same command from overlapping.
 
         Args:
-            loop (Loops): An instance of the Loops class that manages loop execution.
+            loop (Loops): An instance of the Loops class that manages the loop execution.
 
         Usage:
-            - command (str): The name of the command to be executed in a loop. This is a required parameter.
-            - intervals (sleep: int): The required duration in seconds to pause resources before restarting execution.
-            - timer (optional: int): The maximum duration in seconds for loop execution. Once this time is reached, the execution stops.
-            If not defined, the loop will run indefinitely. Use caution to avoid excessive or inefficient consumption of memory and CPU.
+            - command (str): Specifies the name of the command to be executed in a loop. This is required.
+            - intervals (sleep: int): Defines the interval in seconds between each loop execution.
+            This is a required parameter.
+            - timer (optional: int): Specifies the maximum duration in seconds for the loop execution.
+            When this time is reached, the loop stops. If not defined, the loop will run indefinitely.
+            Use caution to avoid excessive or inefficient memory and CPU usage.
+            - daemon (optional: bool): If set to `True`, runs the loop in a background daemon thread.
+            Daemon threads run in the background and exit automatically when the main program finishes.
+            If not set, the thread will continue running until its job is done, even if the main program exits.
+
+        Example:
+            # Running the loop with a specific command and intervals
+            loop.command('app:clock').intervals(sleep=1, timer=10)
+
+            # Running the loop as a daemon thread
+            loop.command('app:clock').daemon().intervals(sleep=1, timer=10)
+
+            # Running the loop without daemon (non-background thread)
+            loop.command('app:clock').daemon(False).intervals(sleep=1, timer=10)
         """
 
         loop.command('app:clock').intervals(sleep=1, timer=10)
