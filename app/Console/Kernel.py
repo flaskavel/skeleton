@@ -9,8 +9,8 @@ class Kernel(ConsoleKernel):
         You can schedule the execution of your commands here based on the predefined options available in Flaskavel.
         """
 
-        # Schedule the task to run every ten minutes.
-        schedule.command('app:cubic', {'height':3, 'length':2, 'width':1}).everyTenMinutes()
+        # Schedule the task to run every three minutes.
+        schedule.command('app:cubic', {'height':3, 'length':2, 'width':1}).everyThreeMinutes()
 
         # Examples:
         # schedule.command('app:?').everySeconds(seconds=7)                                   # Schedule the task to run every  seconds.
