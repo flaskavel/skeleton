@@ -2,9 +2,9 @@
 /storage/*.key
 /venv
 .env
-.env.example
 /.fleet
 /.idea
 /.vscode
 __pycache__/
 *.py[cod]
+*$py.class
