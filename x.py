@@ -1,0 +1,1 @@
+from bootstrap.app import __app

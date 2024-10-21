@@ -1,3 +1,6 @@
+from flaskavel.lab.atomic.environment import env
+from flaskavel.lab.beaker.paths.helpers import bootstrap_path
+
 cache = {
 
     #--------------------------------------------------------------------------
@@ -19,9 +22,8 @@ cache = {
     'store' : {
 
         'file' : {
-            'routes' : None,
-            'config' : None,
-            'session' : None,
+            'routes' : bootstrap_path('cache/routes.lab'),
+            'config' : bootstrap_path('cache/config.lab'),
         }
     },
 

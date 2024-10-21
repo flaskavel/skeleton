@@ -1,4 +1,6 @@
-main = {
+from flaskavel.lab.atomic.environment import env
+
+mail = {
 
     #--------------------------------------------------------------------------
     # Application Name
@@ -26,7 +28,7 @@ main = {
             'encryption' : env('MAIL_ENCRYPTION', 'tls'),
             'username' : env('MAIL_USERNAME'),
             'password' : env('MAIL_PASSWORD'),
-            'timeout' : null,
+            'timeout' : None,
         },
 
         'log' : {

@@ -1,3 +1,6 @@
+from flaskavel.lab.atomic.environment import env
+from flaskavel.lab.beaker.paths.helpers import storage_path
+
 filesystems = {
 
     #--------------------------------------------------------------------------
@@ -28,7 +31,7 @@ filesystems = {
         'public' : {
             'driver' : 'local',
             'root' : storage_path('app/public'),
-            'url' : env('APP_URL').'/storage',
+            'url' : env('APP_URL') + '/storage',
             'visibility' : 'public',
             'throw' : False,
         },

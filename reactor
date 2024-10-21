@@ -1,9 +1,8 @@
 import sys
-import time
-from bootstrap.app import app
+from bootstrap.app import __app
 
 if __name__ == "__main__":
 
     # Bootstrap Flaskavel and handle the command...
-    status = app.start(time.time()).handleCommand(sys.argv)
+    status = __app.handleCommand(sys.argv)
     sys.exit(status)

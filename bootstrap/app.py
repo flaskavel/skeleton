@@ -15,4 +15,3 @@ __app = Application.configure(
                 # ...
             }
         ).create()
-
