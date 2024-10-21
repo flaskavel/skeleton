@@ -1,23 +1,32 @@
 database = {
 
     #--------------------------------------------------------------------------
-    # Application Name
+    # Default Database Connection Name
     #--------------------------------------------------------------------------
-    # This value is the name of your application, which will be used when the
-    # framework needs to place the application's name in a notification or
-    # other UI elements where an application name needs to be displayed.
+    # This value defines the default database connection to be used by your
+    # application. It can be set to any of the connections defined below.
     #--------------------------------------------------------------------------
 
     'default' : env('DB_CONNECTION', 'sqlite'),
 
     #--------------------------------------------------------------------------
-    # Application Name
+    # Database Connections
     #--------------------------------------------------------------------------
-    # This value is the name of your application, which will be used when the
-    # framework needs to place the application's name in a notification or
-    # other UI elements where an application name needs to be displayed.
+    # Here you can define all of the database connections used by your application.
+    # You can configure multiple connections for different database systems such
+    # as SQLite, MySQL, PostgreSQL, and Oracle.
     #--------------------------------------------------------------------------
+    
     'connections': {
+        
+        #----------------------------------------------------------------------
+        # SQLite Connection
+        #----------------------------------------------------------------------
+        # This configuration is for using an SQLite database. It is a lightweight
+        # and easy-to-use database engine that stores data in a single file.
+        # SQLite is ideal for small projects or testing environments.
+        #----------------------------------------------------------------------
+        
         'sqlite' : {
             'driver' : 'sqlite',
             'url' : env('DB_URL'),
@@ -28,6 +37,16 @@ database = {
             'journal_mode' : None,
             'synchronous' : None,
         },
+
+        #----------------------------------------------------------------------
+        # MySQL Connection
+        #----------------------------------------------------------------------
+        # This configuration is for using a MySQL database. MySQL is a popular
+        # relational database management system known for its scalability and
+        # performance. You can configure the connection with host, port, and other
+        # options as defined below.
+        #----------------------------------------------------------------------
+        
         'mysql' : {
             'driver' : 'mysql',
             'url' : env('DB_URL'),
@@ -44,6 +63,15 @@ database = {
             'strict' : True,
             'engine' : None,
         },
+
+        #----------------------------------------------------------------------
+        # PostgreSQL Connection
+        #----------------------------------------------------------------------
+        # This configuration is for using a PostgreSQL database. PostgreSQL is an
+        # advanced object-relational database system known for its robustness and
+        # support for complex queries and large datasets.
+        #----------------------------------------------------------------------
+
         'pgsql' : {
             'driver' : 'pgsql',
             'url' : env('DB_URL'),
@@ -58,6 +86,16 @@ database = {
             'search_path' : 'public',
             'sslmode' : 'prefer',
         },
+
+        #----------------------------------------------------------------------
+        # Oracle Connection
+        #----------------------------------------------------------------------
+        # This configuration is for using an Oracle database. Oracle is a highly
+        # scalable and widely used enterprise-level relational database system.
+        # You can configure the connection using the DSN (Data Source Name) along
+        # with other environment variables such as host, port, and service name.
+        #----------------------------------------------------------------------
+
         'oracle': {
             'driver' : 'oracle',
             'dsn' : env('DB_DSN'),

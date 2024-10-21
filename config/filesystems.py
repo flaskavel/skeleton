@@ -1,22 +1,30 @@
 filesystems = {
 
     #--------------------------------------------------------------------------
-    # Application Name
+    # Default File System Disk
     #--------------------------------------------------------------------------
-    # This value is the name of your application, which will be used when the
-    # framework needs to place the application's name in a notification or
-    # other UI elements where an application name needs to be displayed.
+    # This value defines the default file storage configuration to be used
+    # in the application.
     #--------------------------------------------------------------------------
+
     'default' : env('FILESYSTEM_DISK', 'local'),
 
     #--------------------------------------------------------------------------
-    # Application Name
+    # File System Disks
     #--------------------------------------------------------------------------
-    # This value is the name of your application, which will be used when the
-    # framework needs to place the application's name in a notification or
-    # other UI elements where an application name needs to be displayed.
+    # Configuration for each of the storage options that can be used in the system.
+    # Here, you can define multiple disks for storing files locally or on cloud services
+    # like Amazon S3.
     #--------------------------------------------------------------------------
+    
     'disks' : {
+
+        #----------------------------------------------------------------------
+        # Local Disk
+        #----------------------------------------------------------------------
+        # Configuration for storing files locally on the server's file system.
+        # Useful for private files or internal data storage.
+        #----------------------------------------------------------------------
 
         'local' : {
             'driver' : 'local',
@@ -25,6 +33,13 @@ filesystems = {
             'throw' : False,
         },
 
+        #----------------------------------------------------------------------
+        # Public Disk
+        #----------------------------------------------------------------------
+        # Configuration for storing publicly accessible files. Files stored here
+        # will be available through a public URL.
+        #----------------------------------------------------------------------
+
         'public' : {
             'driver' : 'local',
             'root' : storage_path('app/public'),
@@ -32,6 +47,14 @@ filesystems = {
             'visibility' : 'public',
             'throw' : False,
         },
+
+        #----------------------------------------------------------------------
+        # Amazon S3 Disk
+        #----------------------------------------------------------------------
+        # Configuration for using Amazon S3 to store files in the cloud. S3 is a
+        # popular, scalable cloud storage service. You can configure the access
+        # credentials, bucket name, and other options here.
+        #----------------------------------------------------------------------
 
         's3' : {
             'driver' : 's3',

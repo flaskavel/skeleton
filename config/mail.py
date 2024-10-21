@@ -1,22 +1,29 @@
 main = {
 
     #--------------------------------------------------------------------------
-    # Application Name
+    # Default Mailer
     #--------------------------------------------------------------------------
-    # This value is the name of your application, which will be used when the
-    # framework needs to place the application's name in a notification or
-    # other UI elements where an application name needs to be displayed.
+    # This value defines the default mailer used by the application.
     #--------------------------------------------------------------------------
 
     'default' : env('MAIL_MAILER', 'log'),
 
     #--------------------------------------------------------------------------
-    # Application Name
+    # Mailers Configuration
     #--------------------------------------------------------------------------
-    # smtp-log
+    # This section defines the different mailers available for sending emails
+    # from the application. You can configure multiple transport methods here,
+    # such as SMTP or logging.
     #--------------------------------------------------------------------------
 
     'mailers' : {
+
+        #----------------------------------------------------------------------
+        # SMTP Mailer
+        #----------------------------------------------------------------------
+        # Configuration for sending emails via SMTP. This is the most common
+        # method for connecting to an external mail server.
+        #----------------------------------------------------------------------
 
         'smtp' : {
             'transport' : 'smtp',
@@ -26,8 +33,16 @@ main = {
             'encryption' : env('MAIL_ENCRYPTION', 'tls'),
             'username' : env('MAIL_USERNAME'),
             'password' : env('MAIL_PASSWORD'),
-            'timeout' : null,
+            'timeout' : None,
         },
+
+        #----------------------------------------------------------------------
+        # Log Mailer
+        #----------------------------------------------------------------------
+        # Configuration for logging emails instead of sending them. This is
+        # useful for debugging, allowing you to view the email content without
+        # actually sending it.
+        #----------------------------------------------------------------------
 
         'log' : {
             'transport' : 'log',
