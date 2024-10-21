@@ -1,12 +1,9 @@
 import sys
 import time
-from flaskavel.lab.app import App
+from bootstrap.app import app
 
 if __name__ == "__main__":
 
-    # Create an instance of the Kernel and handle the CLI arguments.
-    status = App(__file__).start(time.time()).make('app.Console.Kernel').handle(sys.argv)
-
-    # Exit the script with the status code returned by the Kernel's handle method.
-    # This allows the operating system to know if the command was successful.
+    # Bootstrap Flaskavel and handle the command...
+    status = app.start(time.time()).handleCommand(sys.argv)
     sys.exit(status)

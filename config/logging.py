@@ -1,4 +1,4 @@
-filesystems = {
+logging = {
 
     #--------------------------------------------------------------------------
     # Application Name
@@ -7,7 +7,8 @@ filesystems = {
     # framework needs to place the application's name in a notification or
     # other UI elements where an application name needs to be displayed.
     #--------------------------------------------------------------------------
-    'default' : env('FILESYSTEM_DISK', 'local'),
+
+    'default' : env('LOG_CHANNEL', 'stack'),
 
     #--------------------------------------------------------------------------
     # Application Name
@@ -16,34 +17,27 @@ filesystems = {
     # framework needs to place the application's name in a notification or
     # other UI elements where an application name needs to be displayed.
     #--------------------------------------------------------------------------
-    'disks' : {
+    'channels' : {
 
-        'local' : {
-            'driver' : 'local',
-            'root' : storage_path('app/private'),
-            'serve' : True,
-            'throw' : False,
+        'stack' : {
+            'driver' : 'stack',
+            'path' : storage_path('logs/flaskavel.log'),
+            'ignore_exceptions' : False,
         },
 
-        'public' : {
-            'driver' : 'local',
-            'root' : storage_path('app/public'),
-            'url' : env('APP_URL').'/storage',
-            'visibility' : 'public',
-            'throw' : False,
+        'single' : {
+            'driver' : 'single',
+            'path' : storage_path('logs/flaskavel.log'),
+            'level' : env('LOG_LEVEL', 'debug'),
+            'replace_placeholders' : True,
         },
 
-        's3' : {
-            'driver' : 's3',
-            'key' : env('AWS_ACCESS_KEY_ID'),
-            'secret' : env('AWS_SECRET_ACCESS_KEY'),
-            'region' : env('AWS_DEFAULT_REGION'),
-            'bucket' : env('AWS_BUCKET'),
-            'url' : env('AWS_URL'),
-            'endpoint' : env('AWS_ENDPOINT'),
-            'use_path_style_endpoint' : env('AWS_USE_PATH_STYLE_ENDPOINT', False),
-            'throw' : False,
+        'daily' : {
+            'driver' : 'daily',
+            'path' : storage_path('logs/flaskavel.log'),
+            'level' : env('LOG_LEVEL', 'debug'),
+            'days' : env('LOG_DAILY_DAYS', 14),
+            'replace_placeholders' : True,
         },
-
-    },
+    }
 }
