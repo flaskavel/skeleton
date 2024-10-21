@@ -1,51 +1,55 @@
 session = {
 
     #--------------------------------------------------------------------------
-    # Application Name
+    # Session Driver
     #--------------------------------------------------------------------------
-    # This value is the name of your application, which will be used when the
-    # framework needs to place the application's name in a notification or
-    # other UI elements where an application name needs to be displayed.
+    # This value defines the driver to be used for session management.
     #--------------------------------------------------------------------------
+
     'driver' : env('SESSION_DRIVER', 'file'),
 
     #--------------------------------------------------------------------------
-    # Application Name
+    # Session Lifetime
     #--------------------------------------------------------------------------
-    # This value is the name of your application, which will be used when the
-    # framework needs to place the application's name in a notification or
-    # other UI elements where an application name needs to be displayed.
+    # This value sets the duration (in minutes) for how long the session
+    # will be valid before it expires.
     #--------------------------------------------------------------------------
+
     'lifetime' : env('SESSION_LIFETIME', 120),
+
+    #--------------------------------------------------------------------------
+    # Expire on Close
+    #--------------------------------------------------------------------------
+    # This value determines whether the session should expire when the user
+    # closes their browser. If set to True, the session will not persist
+    # after the browser is closed.
+    #--------------------------------------------------------------------------
 
     'expire_on_close' : env('SESSION_EXPIRE_ON_CLOSE', False),
 
     #--------------------------------------------------------------------------
-    # Application Name
+    # Session Encryption
     #--------------------------------------------------------------------------
-    # This value is the name of your application, which will be used when the
-    # framework needs to place the application's name in a notification or
-    # other UI elements where an application name needs to be displayed.
+    # This value specifies whether the session data should be encrypted
+    # for additional security. If set to True, the session will be encrypted.
     #--------------------------------------------------------------------------
 
     'encrypt' : env('SESSION_ENCRYPT', False),
 
     #--------------------------------------------------------------------------
-    # Application Name
+    # Session File Path
     #--------------------------------------------------------------------------
-    # This value is the name of your application, which will be used when the
-    # framework needs to place the application's name in a notification or
-    # other UI elements where an application name needs to be displayed.
+    # This value defines the directory path where session files will be stored
+    # when using the file driver.
     #--------------------------------------------------------------------------
 
     'files' : storage_path('framework/sessions'),
 
     #--------------------------------------------------------------------------
-    # Application Name
+    # Session Cookie Configuration
     #--------------------------------------------------------------------------
-    # This value is the name of your application, which will be used when the
-    # framework needs to place the application's name in a notification or
-    # other UI elements where an application name needs to be displayed.
+    # This section configures the properties of the session cookie,
+    # including its name, path, domain, and security settings.
     #--------------------------------------------------------------------------
 
     'cookie' : {

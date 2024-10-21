@@ -1,53 +1,52 @@
 cors = {
 
     #--------------------------------------------------------------------------
-    # Application Name
+    # Application Methods
     #--------------------------------------------------------------------------
-    # This value is the name of your application, which will be used when the
-    # framework needs to place the application's name in a notification or
-    # other UI elements where an application name needs to be displayed.
+    # Value to determine the HTTP methods allowed by CORS to be configured.
+    # These are the methods that can be used by the client when making requests.
     #--------------------------------------------------------------------------
 
     'allowed_methods' : ['GET', 'HEAD', 'POST', 'OPTIONS', 'PUT', 'PATCH', 'DELETE'],
 
     #--------------------------------------------------------------------------
-    # Application Name
+    # Application Origins
     #--------------------------------------------------------------------------
-    # This value is the name of your application, which will be used when the
-    # framework needs to place the application's name in a notification or
-    # other UI elements where an application name needs to be displayed.
+    # Value to determine the allowed origins by CORS.
+    # This specifies which domains are allowed to access the resources of the
+    # application. The wildcard '*' allows all origins.
     #--------------------------------------------------------------------------
 
     'allowed_origins' : '*',
 
     #--------------------------------------------------------------------------
-    # Application Name
+    # Application Headers
     #--------------------------------------------------------------------------
-    # This value is the name of your application, which will be used when the
-    # framework needs to place the application's name in a notification or
-    # other UI elements where an application name needs to be displayed.
+    # Value to define the allowed headers by CORS.
+    # This specifies which HTTP headers can be used when making the actual request.
+    # The wildcard '*' allows all headers.
     #--------------------------------------------------------------------------
 
     'allowed_headers' : '*',
 
     #--------------------------------------------------------------------------
-    # Application Name
+    # Exposed Headers
     #--------------------------------------------------------------------------
-    # This value is the name of your application, which will be used when the
-    # framework needs to place the application's name in a notification or
-    # other UI elements where an application name needs to be displayed.
+    # Value to define headers that can be exposed to the browser by CORS.
+    # These headers are not available by default, but you can allow specific ones
+    # if needed. `None` means no additional headers will be exposed.
     #--------------------------------------------------------------------------
 
     'exposed_headers' : None,
 
     #--------------------------------------------------------------------------
-    # Application Name
+    # Max Age
     #--------------------------------------------------------------------------
-    # This value is the name of your application, which will be used when the
-    # framework needs to place the application's name in a notification or
-    # other UI elements where an application name needs to be displayed.
+    # Value to set the maximum time (in seconds) for which the results of a preflight
+    # request can be cached by the browser.
+    # This avoids sending a preflight request every time the resource is accessed.
+    # `None` means there is no specific time set.
     #--------------------------------------------------------------------------
 
     'max_age' : None,
-
 }
