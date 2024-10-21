@@ -48,8 +48,7 @@ session = {
     #--------------------------------------------------------------------------
     # Session Cookie Configuration
     #--------------------------------------------------------------------------
-    # This section configures the properties of the session cookie,
-    # including its name, path, domain, and security settings.
+    # This section configures the properties of the session cookie.
     #--------------------------------------------------------------------------
 
     'cookie' : {
