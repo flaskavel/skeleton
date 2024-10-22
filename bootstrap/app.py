@@ -5,13 +5,13 @@ from flaskavel.lab.app import Application
 __app = Application.configure(
             base_path = Path(__file__).resolve().parent.parent,
         ).withRouting(
-            api = ['routes/api.py'],
-            web = ['routes/api.py'],
+            api = ('api',),
+            web = ('web',),
         ).withMiddlewares(
             aliases = {
-                # ...
+                'csrf_token' : 'VerifyCsrfToken',
             },
-            use = {
-                # ...
-            }
+            use = [
+                'VerifyCsrfToken',
+            ]
         ).create()
