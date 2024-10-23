@@ -35,6 +35,6 @@ cache = {
     # other UI elements where an application name needs to be displayed.
     #--------------------------------------------------------------------------
 
-    'encrypt' : env('CACHE_ENCRYPT', True)
+    'encrypt' : env('CACHE_ENCRYPT', False)
 
 }

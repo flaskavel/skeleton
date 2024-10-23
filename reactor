@@ -1,8 +1,7 @@
 import sys
-from bootstrap.app import __app
+from bootstrap.app import app
 
 if __name__ == "__main__":
-
     # Bootstrap Flaskavel and handle the command...
-    status = __app.handleCommand(sys.argv)
+    status = app().handleCommand(sys.argv)
     sys.exit(status)

@@ -30,7 +30,7 @@ app = {
     # services the application utilizes. Set this in your ".env" file.
     #--------------------------------------------------------------------------
 
-    'bytecode' : env('APP_BYTECODE', True),
+    'bytecode' : bool(env('APP_BYTECODE', True)),
 
     #--------------------------------------------------------------------------
     # Application Debug Mode
@@ -80,7 +80,7 @@ app = {
     # application. If disabled, a simple generic error page is shown.
     #--------------------------------------------------------------------------
 
-    'cipher' : 'AES-256-GCM',
+    'cipher' : 'AES-192-GCM',
 
     'key' : env('APP_KEY'),
 
