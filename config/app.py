@@ -5,9 +5,8 @@ app = {
     #--------------------------------------------------------------------------
     # Application Name
     #--------------------------------------------------------------------------
-    # This value is the name of your application, which will be used when the
-    # framework needs to place the application's name in a notification or
-    # other UI elements where an application name needs to be displayed.
+    # This value is the name of the application, useful for notifications,
+    # UI elements, or whenever the application's name needs to be displayed.
     #--------------------------------------------------------------------------
 
     'name' : env('APP_NAME', 'Flaskavel'),
@@ -15,19 +14,18 @@ app = {
     #--------------------------------------------------------------------------
     # Application Environment
     #--------------------------------------------------------------------------
-    # This value determines the "environment" your application is currently
-    # running in. This may determine how you prefer to configure various
-    # services the application utilizes. Set this in your ".env" file.
+    # This value determines the "environment" in which the application is
+    # running, useful for determining private system configurations, usually
+    # set in the ".env" file.
     #--------------------------------------------------------------------------
 
     'env' : env('APP_ENV', 'production'),
 
     #--------------------------------------------------------------------------
-    # Application Environment
+    # Application Bytecode
     #--------------------------------------------------------------------------
-    # This value determines the "environment" your application is currently
-    # running in. This may determine how you prefer to configure various
-    # services the application utilizes. Set this in your ".env" file.
+    # This value determines if the application should run by creating bytecode
+    # files, useful if you don't want these files in a dev environment.
     #--------------------------------------------------------------------------
 
     'bytecode' : env('APP_BYTECODE', True),
@@ -35,63 +33,47 @@ app = {
     #--------------------------------------------------------------------------
     # Application Debug Mode
     #--------------------------------------------------------------------------
-    # When your application is in debug mode, detailed error messages with
-    # stack traces will be shown on every error that occurs within your
-    # application. If disabled, a simple generic error page is shown.
+    # Value used to show detailed error information when an error occurs in
+    # the application, useful for deciding whether or not to display details.
     #--------------------------------------------------------------------------
 
-    'debug' : env('APP_DEBUG', False),
+    'debug' : bool(env('APP_DEBUG', False)),
 
     #--------------------------------------------------------------------------
-    # Application Debug Mode
+    # Application Timezone
     #--------------------------------------------------------------------------
-    # When your application is in debug mode, detailed error messages with
-    # stack traces will be shown on every error that occurs within your
-    # application. If disabled, a simple generic error page is shown.
+    # Value used to set the application's timezone, useful if a different
+    # timezone is needed.
     #--------------------------------------------------------------------------
 
     'timezone' : env('APP_TIMEZONE', 'UTC'),
 
     #--------------------------------------------------------------------------
-    # Application Debug Mode
+    # Application Locale
     #--------------------------------------------------------------------------
-    # When your application is in debug mode, detailed error messages with
-    # stack traces will be shown on every error that occurs within your
-    # application. If disabled, a simple generic error page is shown.
+    # Value used to determine the application's language and the return value
+    # of some functions.
     #--------------------------------------------------------------------------
 
     'locale' : env('APP_LOCALE', 'en'),
 
     #--------------------------------------------------------------------------
-    # Application Debug Mode
+    # Application URL
     #--------------------------------------------------------------------------
-    # When your application is in debug mode, detailed error messages with
-    # stack traces will be shown on every error that occurs within your
-    # application. If disabled, a simple generic error page is shown.
+    # Value used to determine the application's URL, useful when you need to
+    # access the URL anywhere in the framework without accessing the ".env" file.
     #--------------------------------------------------------------------------
 
     'url' : env('APP_URL', 'http://localhost'),
 
     #--------------------------------------------------------------------------
-    # Application Debug Mode
+    # Application Encryption
     #--------------------------------------------------------------------------
-    # When your application is in debug mode, detailed error messages with
-    # stack traces will be shown on every error that occurs within your
-    # application. If disabled, a simple generic error page is shown.
+    # Values used to define the encryption supported by the framework,
+    # supporting 128, 192, 256-bit keys.
     #--------------------------------------------------------------------------
 
     'cipher' : 'AES-256-GCM',
 
-    'key' : env('APP_KEY'),
-
-    #--------------------------------------------------------------------------
-    # Application Debug Mode
-    #--------------------------------------------------------------------------
-    # When your application is in debug mode, detailed error messages with
-    # stack traces will be shown on every error that occurs within your
-    # application. If disabled, a simple generic error page is shown.
-    #--------------------------------------------------------------------------
-
-    'url' : env('APP_URL', 'http://localhost'),
-
+    'key' : env('APP_KEY')
 }

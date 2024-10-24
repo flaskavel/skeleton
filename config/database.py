@@ -4,22 +4,22 @@ from flaskavel.lab.beaker.paths.helpers import database_path
 database = {
 
     #--------------------------------------------------------------------------
-    # Application Name
+    # Default Database Connection Name
     #--------------------------------------------------------------------------
-    # This value is the name of your application, which will be used when the
-    # framework needs to place the application's name in a notification or
-    # other UI elements where an application name needs to be displayed.
+    # This value defines the default database connection to be used by your
+    # application. It can be set to any of the connections defined below.
     #--------------------------------------------------------------------------
 
     'default' : env('DB_CONNECTION', 'sqlite'),
 
     #--------------------------------------------------------------------------
-    # Application Name
+    # Database Connections
     #--------------------------------------------------------------------------
-    # This value is the name of your application, which will be used when the
-    # framework needs to place the application's name in a notification or
-    # other UI elements where an application name needs to be displayed.
+    # Here you can define all of the database connections used by your application.
+    # You can configure multiple connections for different database systems such
+    # as SQLite, MySQL, PostgreSQL, and Oracle.
     #--------------------------------------------------------------------------
+     
     'connections': {
         'sqlite' : {
             'driver' : 'sqlite',
