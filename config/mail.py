@@ -1,6 +1,6 @@
 from flaskavel.lab.atomic.environment import env
 
-main = {
+mail = {
 
     #--------------------------------------------------------------------------
     # Default Mailer
