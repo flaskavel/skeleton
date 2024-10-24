@@ -18,9 +18,9 @@ def app():
         # web=['web'],
     ).withMiddlewares(
         aliases={
-            'csrf': {'module': 'VerifyCsrfToken', 'classname': 'VerifyCsrfToken'},
+            'csrf': {'module': 'ExampleMiddleware', 'classname': 'ExampleMiddleware'},
         },
         use=[
-            {'module': 'VerifyCsrfToken', 'classname': 'VerifyCsrfToken'},
+            {'module': 'ExampleMiddleware', 'classname': 'ExampleMiddleware'},
         ]
     ).create()
