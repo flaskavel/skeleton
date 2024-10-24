@@ -83,10 +83,3 @@ class Kernel(ConsoleKernel):
         """
 
         loop.command('app:clock').intervals(sleep=1, timer=10)
-
-    def commands(self) -> None:
-        """
-        If you want to organize your commands in different locations, you can register here where to load them from.
-        """
-
-        self.load(__file__, '/Commands')
