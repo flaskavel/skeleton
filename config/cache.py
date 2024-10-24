@@ -4,19 +4,19 @@ from flaskavel.lab.beaker.paths.helpers import bootstrap_path
 cache = {
 
     #--------------------------------------------------------------------------
-    # Application Name
+    # Default Cache
     #--------------------------------------------------------------------------
-    # Solo file en el momento
+    # Value to select the default configuration used to store the application's
+    # cache. 
     #--------------------------------------------------------------------------
 
     'default' : env('CACHE_STORE', 'file'),
 
     #--------------------------------------------------------------------------
-    # Application Name
+    # Cache Options
     #--------------------------------------------------------------------------
-    # This value is the name of your application, which will be used when the
-    # framework needs to place the application's name in a notification or
-    # other UI elements where an application name needs to be displayed.
+    # Options for storing the application's cache, currently only supports 'file',
+    # where routes, config, and sessions will be stored.
     #--------------------------------------------------------------------------
 
     'store' : {
@@ -28,11 +28,10 @@ cache = {
     },
 
     #--------------------------------------------------------------------------
-    # Application Name
+    # Application Encrypt
     #--------------------------------------------------------------------------
-    # This value is the name of your application, which will be used when the
-    # framework needs to place the application's name in a notification or
-    # other UI elements where an application name needs to be displayed.
+    # Value to determine if the cache should be encrypted, useful for providing
+    # an additional layer of security.
     #--------------------------------------------------------------------------
 
     'encrypt' : env('CACHE_ENCRYPT', False),
