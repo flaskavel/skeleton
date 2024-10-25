@@ -20,5 +20,4 @@ class CubicCommand(Command):
         """
         Command execution logic
         """
-        return
         self.uniqueLine(datetime.datetime.now().strftime("%d/%m/%y %H:%M:%S"))
