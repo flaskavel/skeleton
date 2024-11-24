@@ -1,7 +1,7 @@
 # **Flaskavel Framework**
 **Your Web Development Laboratory**
 
-<p align="center"><a href="https://flaskavel.com" target="_blank"><img src="https://raw.githubusercontent.com/flaskavel/framework/refs/heads/master/flaskavel/art/logo.png" width="505"></a></p>
+<p align="center"><a href="https://flaskavel.com" target="_blank"><img src="https://raw.githubusercontent.com/flaskavel/framework/refs/heads/master/flaskavel/art/logo.png" width="500"></a></p>
 
 Welcome to **Flaskavel**, the web framework designed to provide a seamless and powerful development experience! If you're looking for a solution that combines elegance, robustness, and ease of use, you're in the right place.
 
@@ -24,7 +24,7 @@ As for **Laravel**—while we don't directly implement Laravel, we embrace its *
 At Flaskavel, we understand that developers seek a framework that doesn't just work but also evolves with the changing landscape of web development. Here's why Flaskavel stands out:
 
 ### **Progressive and Feature-Rich**
-Flaskavel was built to progressively cover everything you can accomplish in other languages but with Python's strength. 
+Flaskavel was built to progressively cover everything you can accomplish in other languages but with Python's strength.
 
 - **Create REST APIs effortlessly**: With Flaskavel, creating RESTful APIs is a breeze, and it comes with the flexibility you need for modern, scalable services.
 - **Render content with SSR**: Looking for Server-Side Rendering (SSR)? Flaskavel allows you to render dynamic content directly on the server and serve it to the browser—faster and more efficiently.
@@ -135,7 +135,7 @@ Flaskavel is an open-source project, and we invite you to help make it better! W
 
 ## **Documentation**
 
-For a complete reference on how to use Flaskavel, including advanced configuration and tips on building larger applications, visit our [full documentation](flaskavel.com).
+For a complete reference on how to use Flaskavel, including advanced configuration and tips on building larger applications, visit our [full documentation](https://flaskavel.com).
 
 ---
 
