@@ -1,8 +1,1 @@
-compiled.py
-config.py
-events.scanned.py
-maintenance.py
-routes.py
-routes.scanned.py
-schedule.py
-services.py
+!.gitignore

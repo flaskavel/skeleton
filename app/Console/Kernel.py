@@ -6,10 +6,14 @@ class Kernel(ConsoleKernel):
 
     def schedule(self, schedule: Schedule) -> None:
         """
-        You can schedule the execution of your commands here based on the predefined options available in Flaskavel.
+        Schedules the execution of commands based on predefined options available in Flaskavel.
+        This method configures the task to run at specific intervals.
+
+        Args:
+            schedule (Schedule): Instance of the Schedule class to manage scheduled tasks.
         """
 
-        # Schedule the task to run every three minutes.
+        # Schedule the 'app:cubic' command to run every three minutes with predefined parameters.
         schedule.command('app:cubic', {'height':3, 'length':2, 'width':1}).everyThreeMinutes()
 
         # Examples:
@@ -54,32 +58,28 @@ class Kernel(ConsoleKernel):
 
     def loops(self, loop: Loops) -> None:
         """
-        Manages continuous execution of a command in a loop, ensuring sequential processing
-        to prevent multiple instances of the same command from overlapping.
+        Manages the continuous execution of a command in a loop, ensuring that commands do not overlap.
+        This method ensures sequential execution and prevents multiple instances of the same command.
 
         Args:
-            loop (Loops): An instance of the Loops class that manages the loop execution.
+            loop (Loops): An instance of the Loops class to manage the loop execution.
 
         Usage:
-            - command (str): Specifies the name of the command to be executed in a loop. This is required.
+            - command (str): The command name to be executed in the loop.
             - intervals (sleep: int): Defines the interval in seconds between each loop execution.
-            This is a required parameter.
-            - timer (optional: int): Specifies the maximum duration in seconds for the loop execution.
-            When this time is reached, the loop stops. If not defined, the loop will run indefinitely.
-            Use caution to avoid excessive or inefficient memory and CPU usage.
-            - daemon (optional: bool): If set to `True`, runs the loop in a background daemon thread.
-            Daemon threads run in the background and exit automatically when the main program finishes.
-            If not set, the thread will continue running until its job is done, even if the main program exits.
+            - timer (optional: int): Specifies the maximum duration (in seconds) for the loop.
+            - daemon (optional: bool): Runs the loop as a background daemon thread if set to `True`.
 
         Example:
-            # Running the loop with a specific command and intervals
+            # Running a command at intervals with a specified sleep time and a maximum duration.
             loop.command('app:clock').intervals(sleep=1, timer=10)
 
-            # Running the loop as a daemon thread
+            # Running the loop as a daemon thread.
             loop.command('app:clock').daemon().intervals(sleep=1, timer=10)
 
-            # Running the loop without daemon (non-background thread)
+            # Running the loop without daemon (non-background thread).
             loop.command('app:clock').daemon(False).intervals(sleep=1, timer=10)
         """
 
+        # Schedule the 'app:clock' command to run every 1 second with a 10-second timer.
         loop.command('app:clock').intervals(sleep=1, timer=10)

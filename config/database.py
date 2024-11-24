@@ -19,7 +19,7 @@ database = {
     # You can configure multiple connections for different database systems such
     # as SQLite, MySQL, PostgreSQL, and Oracle.
     #--------------------------------------------------------------------------
-     
+
     'connections': {
         'sqlite' : {
             'driver' : 'sqlite',

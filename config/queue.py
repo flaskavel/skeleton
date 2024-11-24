@@ -19,7 +19,7 @@ queue = {
     'connections': {
 
         #----------------------------------------------------------------------
-        # Database Queue Connection
+        # Database Queue Connection.
         #----------------------------------------------------------------------
         # Configuration for using the database as the queue driver. This allows
         # queue to be stored in a database table and processed in the background.

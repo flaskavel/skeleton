@@ -1,23 +1,35 @@
 import time
-from flaskavel.lab.beaker.console.reactor import reactor
 from flaskavel.lab.beaker.console.command import Command
+from flaskavel.lab.beaker.console.reactor import reactor
 
 @reactor.register
 class CubicCommand(Command):
 
     """
     Flaskavel Example Command
+
+    This command calculates the cubic meters of an object based on user-provided dimensions
+    (height, length, and width) and the number of objects. It also allows for further
+    interactive steps like input validation, displaying mathematical formulas, and selecting
+    units of measurement.
+
     Attributes:
-        signature (str): Unique name for the command to register.
-        description (str): Brief description of its functionality.
+        signature (str): The unique name for the command used to register it.
+        description (str): A brief description of the command's functionality.
     """
 
+    # The unique signature used to register the command
     signature = 'app:cubic'
+
+    # A brief description of what the command does
     description = 'Example usage of Flaskavel CLI, calculates the cubic meters of an element.'
 
     def arguments(self):
         """
-        These are the expected arguments when calling the command
+        Defines the expected arguments when calling the command.
+
+        Returns:
+            list: List of tuples with argument names and their properties (e.g., type, required, help text).
         """
         return [
             ('--height', {'type': int, 'required': True, 'help': 'Height of the area'}),
@@ -29,43 +41,45 @@ class CubicCommand(Command):
     def handle(self) -> None:
 
         """
-        Command execution logic
+        Command execution logic.
+
+        Retrieves user inputs, calculates the cubic meters, and provides additional interactions
+        like displaying the formula, confirming values, and providing a progress bar.
         """
 
-        # Read the arguments
+        # Retrieve arguments passed to the command
         height = self.argument('height')
         length = self.argument('length')
         width = self.argument('width')
         name = self.argument('name', 'Cube')
 
-        # Print a line
+        # Display the cubic meters calculation header
         self.line(f"Cubic Meters Calculation: Object Name: {name}, Height: {height} - Width: {width} - Length: {length}")
 
-        # Print an informational message
+        # Show dimensions
         self.info(f"Dimensions: Height: {height} - Width: {width} - Length: {length}")
 
-        # Ask how many objects
+        # Ask the user how many objects they are calculating for
         quantity = self.ask("How many objects are there?")
 
-        # Ensure it's numeric
+        # Validate that the quantity is numeric
         if not str(quantity).isnumeric():
-            # Print an error message
             self.error("The value is not numeric.")
             self.exit()
 
-        # Request confirmation
+        # Ask for confirmation to show the mathematical formula
         result = self.confirm("Would you like to know the mathematical formula?")
         if result:
             self.line(f"fx = ({height}*{width}*{length})*{quantity}")
 
-        # Ask for secret input
+        # Request a secret input to verify user identity
         secret = self.secret("To ensure you're not a robot, enter the value [1234]")
         if str(secret).strip() != "1234":
             # Print a failure message
             self.fail("Robot validation failed.")
             self.exit()
 
-        # Anticipate input (autocomplete)
+        # Anticipate user's response with options for the state of matter
         anticipate_option = self.anticipate(
             question='What state of matter is the object in:',
             options=['Solid', 'Liquid', 'Gas', 'Plasma'],
@@ -73,16 +87,16 @@ class CubicCommand(Command):
         )
         self.line(f"Object state: {anticipate_option}")
 
-        # Print a newline
+        # Add a newline for clarity
         self.newLine()
 
-        # Choose from a list
+        # Ask the user to choose the measurement units
         measurement = self.choice('In which units are the dimensions:', ['Meters', 'Inches', 'Centimeters'])
 
-        # Print multiple newlines
+        # Add more newlines for formatting
         self.newLine(2)
 
-        # Generate a table with supplied data
+        # Display the data in a table format
         self.table(
             ['Concept', 'Value'],
             [
@@ -94,21 +108,21 @@ class CubicCommand(Command):
             ]
         )
 
-        # Print a newline
+        # Add a final newline
         self.newLine()
 
-        # Generate a progress bar simulating the process
+        # Start a progress bar to simulate a task
         bar = self.createProgressBar(total=100, width=100, inline=False)
         bar.start()
 
-        # Simulate progress
+        # Simulate progress in the task
         for i in range(3):
             time.sleep(1)
             bar.advance(25)
 
-        # Finish the progress bar
+        # Finish the progress bar after the simulation
         bar.finish()
 
-        # Final message
+        # Final output: calculate and display the total volume
         volume = (int(height) * int(width) * int(length)) * int(quantity)
         self.info(f"The total volume is: {str(volume)} {measurement}")

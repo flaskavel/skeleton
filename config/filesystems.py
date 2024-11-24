@@ -19,7 +19,7 @@ filesystems = {
     # Here, you can define multiple disks for storing files locally or on cloud services
     # like Amazon S3.
     #--------------------------------------------------------------------------
-    
+
     'disks' : {
 
         #----------------------------------------------------------------------

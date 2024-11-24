@@ -34,7 +34,8 @@ session = {
     # Session Encryption
     #--------------------------------------------------------------------------
     # This value specifies whether the session data should be encrypted
-    # for additional security. If set to True, the session will be encrypted.
+    # for additional security.
+    # If set to True, the session will be encrypted.
     #--------------------------------------------------------------------------
 
     'encrypt' : env('SESSION_ENCRYPT', False),

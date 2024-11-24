@@ -21,7 +21,7 @@ mail = {
     'mailers' : {
 
         #----------------------------------------------------------------------
-        # SMTP Mailer
+        # SMTP _ Mailer
         #----------------------------------------------------------------------
         # Configuration for sending emails via SMTP. This is the most common
         # method for connecting to an external mail server.
@@ -39,7 +39,7 @@ mail = {
         },
 
         #----------------------------------------------------------------------
-        # Log Mailer
+        # Log _ Mailer
         #----------------------------------------------------------------------
         # Configuration for logging emails instead of sending them. This is
         # useful for debugging, allowing you to view the email content without

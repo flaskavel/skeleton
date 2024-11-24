@@ -7,7 +7,7 @@ cache = {
     # Default Cache
     #--------------------------------------------------------------------------
     # Value to select the default configuration used to store the application's
-    # cache. 
+    # cache.
     #--------------------------------------------------------------------------
 
     'default' : env('CACHE_STORE', 'file'),

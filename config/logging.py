@@ -18,6 +18,7 @@ logging = {
     # Each channel represents a way to write logs to a different location such as
     # a file, the console, or an external service.
     #--------------------------------------------------------------------------
+
     'channels' : {
 
         #----------------------------------------------------------------------
