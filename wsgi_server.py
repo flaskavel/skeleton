@@ -1,6 +1,26 @@
 # Import the Flaskavel application instance from the bootstrap.app module.
 from bootstrap.app import app
 
+# This deployment setup is intended for Windows servers.
+# Ensure that it is accompanied by a "web.config" file, which should be adjusted to point to the project's root directory.
+#
+# Important:
+# Before deploying to IIS, make sure to:
+# 1. Activate the virtual environment.
+# .\venv\Scripts\activate
+
+# 2. Install the required dependencies:
+# pip install wfastcgi
+
+# 3. Register the environment with the following command:
+# wfastcgi-enable
+
+# This command will update the configuration at:
+# C:\Windows\System32\inetsrv\config\applicationHost.config
+# It adds the environment that will be used in the "web.config" file.
+
+# 4. Once configured, stop the environment and proceed to add the project's root folder to IIS as a new application.
+
 def wsgi_handler(environ, start_response):
     """
     WSGI handler function to bridge between the web server and the Flaskavel application.
