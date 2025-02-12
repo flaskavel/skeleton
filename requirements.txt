@@ -1,1 +1,1 @@
-flaskavel>=1.9.9
+flaskavel>=1.31.0
