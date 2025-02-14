@@ -1,9 +1,11 @@
 from flaskavel.luminate.contracts.config.config_interface import IConfig
-from flaskavel.luminate.config.dataclass.cors import Data
+from flaskavel.luminate.bootstrap.register import register
+from flaskavel.luminate.config.dataclass.cors import Cors
 
-class Cache(IConfig):
+@register.config
+class Config(IConfig):
 
-    config = Data(
+    config = Cors(
 
         #--------------------------------------------------------------------------
         # Application Methods

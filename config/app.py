@@ -1,62 +1,81 @@
 from flaskavel.luminate.contracts.config.config_interface import IConfig
-from flaskavel.luminate.config.dataclass.app import Data
+from flaskavel.luminate.bootstrap.register import register
+from flaskavel.luminate.config.dataclass.app import App
 from flaskavel.luminate.facades.environment import env
 
-class App(IConfig):
+@register.config
+class Config(IConfig):
 
-    config = Data(
+    config = App(
 
         #--------------------------------------------------------------------------
         # Application Name
         #--------------------------------------------------------------------------
-        # This value is the name of the application, useful for notifications,
-        # UI elements, or whenever the application's name needs to be displayed.
+        # Defines the name of the application.
+        #
+        # This value is used in notifications, UI elements, logs, and anywhere
+        # the application's name needs to be displayed.
         #--------------------------------------------------------------------------
 
         name = env('APP_NAME', 'Flaskavel'),
 
         #--------------------------------------------------------------------------
-        # Application Debug Mode
+        # Debug Mode
         #--------------------------------------------------------------------------
-        # Value used to show detailed error information when an error occurs in
-        # the application, useful for deciding whether or not to display details.
+        # Enables or disables detailed error reporting.
+        #
+        # When set to True, the application will display detailed error messages,
+        # which is useful during development but should be disabled in production.
         #--------------------------------------------------------------------------
 
         debug = env('APP_DEBUG', False),
 
         #--------------------------------------------------------------------------
-        # Application Bytecode
+        # Bytecode Compilation
         #--------------------------------------------------------------------------
-        # This value determines if the application should run by creating bytecode
-        # files, useful if you don't want these files in a dev environment.
+        # Controls whether the application generates bytecode files (.pyc).
+        #
+        # Setting this to False can be useful in development environments where
+        # you do not want bytecode files cluttering the project directory.
         #--------------------------------------------------------------------------
 
         bytecode = env('APP_BYTECODE', True),
 
         #--------------------------------------------------------------------------
-        # Application Timezone
+        # Timezone Configuration
         #--------------------------------------------------------------------------
-        # Value used to set the application's timezone, useful if a different
-        # timezone is needed.
+        # Defines the application's default timezone.
+        #
+        # This setting ensures consistency when handling timestamps, logs,
+        # and scheduled tasks. The default value is 'UTC'.
         #--------------------------------------------------------------------------
 
         timezone = env('APP_TIMEZONE', 'UTC'),
 
         #--------------------------------------------------------------------------
-        # Application URL
+        # Uvicorn Server Configuration
         #--------------------------------------------------------------------------
-        # Value used to determine the application's URL, useful when you need to
-        # access the URL anywhere in the framework without accessing the ".env" file.
+        # Defines the settings for running the application with Uvicorn.
+        #
+        # - `url`     : The host address for the application.
+        # - `port`    : The port number on which the application will run.
+        # - `workers` : Number of worker processes to handle requests.
+        # - `reload`  : Enables auto-reloading when code changes (useful for development).
         #--------------------------------------------------------------------------
 
         url = env('APP_URL', '127.0.0.1'),
         port = env('APP_PORT', 8080),
+        workers = env('APP_WORKERS', 1),
+        reload = env('APP_RELOAD', False),
 
         #--------------------------------------------------------------------------
         # Application Encryption
         #--------------------------------------------------------------------------
-        # Values used to define the encryption supported by the framework,
-        # supporting 128, 192, 256-bit keys.
+        # Defines the encryption method and key used by the framework.
+        #
+        # The encryption method used is AES-256-GCM, which ensures secure data
+        # encryption. The key should be properly set via environment variables.
+        # Supported key sizes: 128, 192, or 256-bit.
         #--------------------------------------------------------------------------
 
         cipher = 'AES-256-GCM',
