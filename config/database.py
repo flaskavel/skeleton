@@ -1,8 +1,8 @@
 from flaskavel.luminate.config.dataclass.database import Database, Connections, Sqlite, Mysql, Pgsql, Oracle
 from flaskavel.luminate.contracts.config.config_interface import IConfig
-from flaskavel.lab.beaker.paths.helpers import database_path
 from flaskavel.luminate.bootstrap.register import register
-from flaskavel.lab.atomic.environment import env
+from flaskavel.luminate.facades.paths import database_path
+from flaskavel.luminate.facades.environment import env
 
 @register.config
 class Config(IConfig):
