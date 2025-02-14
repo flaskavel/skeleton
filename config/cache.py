@@ -1,39 +1,31 @@
-from flaskavel.lab.atomic.environment import env
-from flaskavel.lab.beaker.paths.helpers import bootstrap_path
+from flaskavel.luminate.contracts.config.config_interface import IConfig
+from flaskavel.luminate.config.dataclass.cache import Data
+from flaskavel.luminate.facades.paths import storage_path
+from flaskavel.luminate.facades.environment import env
 
-cache = {
+class Cache(IConfig):
 
-    #--------------------------------------------------------------------------
-    # Default Cache
-    #--------------------------------------------------------------------------
-    # Value to select the default configuration used to store the application's
-    # cache.
-    #--------------------------------------------------------------------------
+    config = Data(
 
-    'default' : env('CACHE_STORE', 'file'),
+        #--------------------------------------------------------------------------
+        # Default Cache
+        #--------------------------------------------------------------------------
+        # Value to select the default configuration used to store the application's
+        # cache.
+        #--------------------------------------------------------------------------
 
-    #--------------------------------------------------------------------------
-    # Cache Options
-    #--------------------------------------------------------------------------
-    # Options for storing the application's cache, currently only supports 'file',
-    # where routes, config, and sessions will be stored.
-    #--------------------------------------------------------------------------
+        default = env('CACHE_STORE', None),
 
-    'store' : {
+        #--------------------------------------------------------------------------
+        # Cache Options
+        #--------------------------------------------------------------------------
+        # Options for storing the application's cache, currently only supports 'file',
+        # where routes, config, and sessions will be stored.
+        #--------------------------------------------------------------------------
 
-        'file' : {
-            'routes' : bootstrap_path('cache/routes.lab'),
-            'config' : bootstrap_path('cache/config.lab'),
-        }
-    },
-
-    #--------------------------------------------------------------------------
-    # Application Encrypt
-    #--------------------------------------------------------------------------
-    # Value to determine if the cache should be encrypted, useful for providing
-    # an additional layer of security.
-    #--------------------------------------------------------------------------
-
-    'encrypt' : env('CACHE_ENCRYPT', False),
-
-}
+        stores = {
+            'file' : {
+                'path' : storage_path('framework/cache/data')
+            },
+        },
+    )
