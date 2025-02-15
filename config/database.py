@@ -28,6 +28,13 @@ class Config(IConfig):
 
         connections = Connections(
 
+            #----------------------------------------------------------------------
+            # SQLite Database Connection
+            #----------------------------------------------------------------------
+            # Here you may configure the SQLite database settings used by your
+            # application. SQLite is a lightweight database that supports both
+            # in-memory and disk-based storage.
+            #----------------------------------------------------------------------
             sqlite = Sqlite(
                 driver='sqlite',
                 url=env('DB_URL'),
@@ -39,6 +46,13 @@ class Config(IConfig):
                 synchronous=None
             ),
 
+            #----------------------------------------------------------------------
+            # MySQL Database Connection
+            #----------------------------------------------------------------------
+            # Here you may configure the MySQL database settings used by your
+            # application. MySQL is a popular open-source database management
+            # system which supports a wide range of features.
+            #----------------------------------------------------------------------
             mysql = Mysql(
                 driver='mysql',
                 url=env('DB_URL'),
@@ -56,6 +70,13 @@ class Config(IConfig):
                 engine=None
             ),
 
+            #----------------------------------------------------------------------
+            # PostgreSQL Database Connection
+            #----------------------------------------------------------------------
+            # Here you may configure the PostgreSQL database settings used by your
+            # application. PostgreSQL is a robust relational database system known
+            # for its reliability, feature robustness, and performance.
+            #----------------------------------------------------------------------
             pgsql = Pgsql(
                 driver='pgsql',
                 url=env('DB_URL'),
@@ -71,6 +92,13 @@ class Config(IConfig):
                 sslmode='prefer'
             ),
 
+            #----------------------------------------------------------------------
+            # Oracle Database Connection
+            #----------------------------------------------------------------------
+            # Here you may configure the Oracle database settings used by your
+            # application. Oracle is a powerful enterprise database management
+            # system that is widely used in corporate environments.
+            #----------------------------------------------------------------------
             oracle = Oracle(
                 driver='oracle',
                 dsn=env('DB_DSN'),
@@ -82,6 +110,5 @@ class Config(IConfig):
                 service=env('DB_SERVICE'),
                 sid=env('DB_SID')
             )
-
         )
     )

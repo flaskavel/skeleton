@@ -1,75 +1,73 @@
-from flaskavel.lab.atomic.environment import env
-from flaskavel.lab.beaker.paths.helpers import storage_path
+from flaskavel.luminate.config.dataclass.filesystems import Filesystems, Disks, Local, Public, AWSS3
+from flaskavel.luminate.contracts.config.config_interface import IConfig
+from flaskavel.luminate.bootstrap.register import register
+from flaskavel.luminate.facades.paths import storage_path
+from flaskavel.luminate.facades.environment import env
 
-filesystems = {
+@register.config
+class Config(IConfig):
 
-    #--------------------------------------------------------------------------
-    # Default File System Disk
-    #--------------------------------------------------------------------------
-    # This value defines the default file storage configuration to be used
-    # in the application.
-    #--------------------------------------------------------------------------
+    config = Filesystems(
 
-    'default' : env('FILESYSTEM_DISK', 'local'),
+        #--------------------------------------------------------------------------
+        # Default File System Disk
+        #--------------------------------------------------------------------------
+        # This value defines the default file storage configuration to be used
+        # in the application.
+        #--------------------------------------------------------------------------
 
-    #--------------------------------------------------------------------------
-    # File System Disks
-    #--------------------------------------------------------------------------
-    # Configuration for each of the storage options that can be used in the system.
-    # Here, you can define multiple disks for storing files locally or on cloud services
-    # like Amazon S3.
-    #--------------------------------------------------------------------------
+        default = env('FILESYSTEM_DISK', 'local'),
 
-    'disks' : {
+        #--------------------------------------------------------------------------
+        # File System Disks
+        #--------------------------------------------------------------------------
+        # Configuration for each of the storage options that can be used in the system.
+        # Here, you can define multiple disks for storing files locally or on cloud services
+        # like Amazon S3.
+        #--------------------------------------------------------------------------
 
-        #----------------------------------------------------------------------
-        # Local Disk
-        #----------------------------------------------------------------------
-        # Configuration for storing files locally on the server's file system.
-        # Useful for private files or internal data storage.
-        #----------------------------------------------------------------------
+        disks = Disks(
 
-        'local' : {
-            'driver' : 'local',
-            'root' : storage_path('app/private'),
-            'serve' : True,
-            'throw' : False,
-        },
+            #----------------------------------------------------------------------
+            # Local Disk
+            #----------------------------------------------------------------------
+            # Defines the storage path for private files
+            #----------------------------------------------------------------------
 
-        #----------------------------------------------------------------------
-        # Public Disk
-        #----------------------------------------------------------------------
-        # Configuration for storing publicly accessible files. Files stored here
-        # will be available through a public URL.
-        #----------------------------------------------------------------------
+            local = Local(
+                path=storage_path('app/private')
+            ),
 
-        'public' : {
-            'driver' : 'local',
-            'root' : storage_path('app/public'),
-            'url' : env('APP_URL') + '/storage',
-            'visibility' : 'public',
-            'throw' : False,
-        },
+            #----------------------------------------------------------------------
+            # Public Disk
+            #----------------------------------------------------------------------
+            # Defines the location where files will be publicly exposed
+            # through the application's base URL.
+            # The 'static' slug is defined so that static files are served
+            #----------------------------------------------------------------------
 
-        #----------------------------------------------------------------------
-        # Amazon S3 Disk
-        #----------------------------------------------------------------------
-        # Configuration for using Amazon S3 to store files in the cloud. S3 is a
-        # popular, scalable cloud storage service. You can configure the access
-        # credentials, bucket name, and other options here.
-        #----------------------------------------------------------------------
+            public = Public(
+                path=storage_path('app/public'),
+                slug='static'
+            ),
 
-        's3' : {
-            'driver' : 's3',
-            'key' : env('AWS_ACCESS_KEY_ID'),
-            'secret' : env('AWS_SECRET_ACCESS_KEY'),
-            'region' : env('AWS_DEFAULT_REGION'),
-            'bucket' : env('AWS_BUCKET'),
-            'url' : env('AWS_URL'),
-            'endpoint' : env('AWS_ENDPOINT'),
-            'use_path_style_endpoint' : env('AWS_USE_PATH_STYLE_ENDPOINT', False),
-            'throw' : False,
-        },
+            #----------------------------------------------------------------------
+            # Amazon S3 Disk
+            #----------------------------------------------------------------------
+            # Configuration for using Amazon S3 to store files in the cloud. S3 is a
+            # popular, scalable cloud storage service. You can configure the access
+            # credentials, bucket name, and other options here.
+            #----------------------------------------------------------------------
 
-    },
-}
+            s3 = AWSS3(
+                key=env('AWS_ACCESS_KEY_ID'),
+                secret=env('AWS_SECRET_ACCESS_KEY'),
+                region=env('AWS_DEFAULT_REGION'),
+                bucket=env('AWS_BUCKET'),
+                url=env('AWS_URL'),
+                endpoint=env('AWS_ENDPOINT'),
+                use_path_style_endpoint=env('AWS_USE_PATH_STYLE_ENDPOINT', False),
+                throw=False
+            )
+        )
+    )

@@ -1,67 +1,72 @@
-from flaskavel.lab.atomic.environment import env
-from flaskavel.lab.beaker.paths.helpers import storage_path
+from flaskavel.luminate.config.dataclass.session import Session, Cookie
+from flaskavel.luminate.contracts.config.config_interface import IConfig
+from flaskavel.luminate.bootstrap.register import register
+from flaskavel.luminate.facades.paths import storage_path
+from flaskavel.luminate.facades.environment import env
 
-session = {
+@register.config
+class Config(IConfig):
 
-    #--------------------------------------------------------------------------
-    # Session Driver
-    #--------------------------------------------------------------------------
-    # This value defines the driver to be used for session management.
-    #--------------------------------------------------------------------------
+    config = Session(
 
-    'driver' : env('SESSION_DRIVER', 'file'),
+        #--------------------------------------------------------------------------
+        # Session Driver
+        #--------------------------------------------------------------------------
+        # This value defines the driver to be used for session management.
+        #--------------------------------------------------------------------------
 
-    #--------------------------------------------------------------------------
-    # Session Lifetime
-    #--------------------------------------------------------------------------
-    # This value sets the duration (in minutes) for how long the session
-    # will be valid before it expires.
-    #--------------------------------------------------------------------------
+        driver = env('SESSION_DRIVER', 'file'),
 
-    'lifetime' : env('SESSION_LIFETIME', 120),
+        #--------------------------------------------------------------------------
+        # Session Lifetime
+        #--------------------------------------------------------------------------
+        # This value sets the duration (in minutes) for how long the session
+        # will be valid before it expires.
+        #--------------------------------------------------------------------------
 
-    #--------------------------------------------------------------------------
-    # Expire on Close
-    #--------------------------------------------------------------------------
-    # This value determines whether the session should expire when the user
-    # closes their browser. If set to True, the session will not persist
-    # after the browser is closed.
-    #--------------------------------------------------------------------------
+        lifetime = env('SESSION_LIFETIME', 120),
 
-    'expire_on_close' : env('SESSION_EXPIRE_ON_CLOSE', False),
+        #--------------------------------------------------------------------------
+        # Expire on Close
+        #--------------------------------------------------------------------------
+        # This value determines whether the session should expire when the user
+        # closes their browser. If set to True, the session will not persist
+        # after the browser is closed.
+        #--------------------------------------------------------------------------
 
-    #--------------------------------------------------------------------------
-    # Session Encryption
-    #--------------------------------------------------------------------------
-    # This value specifies whether the session data should be encrypted
-    # for additional security.
-    # If set to True, the session will be encrypted.
-    #--------------------------------------------------------------------------
+        expire_on_close = env('SESSION_EXPIRE_ON_CLOSE', False),
 
-    'encrypt' : env('SESSION_ENCRYPT', False),
+        #--------------------------------------------------------------------------
+        # Session Encryption
+        #--------------------------------------------------------------------------
+        # This value specifies whether the session data should be encrypted
+        # for additional security.
+        # If set to True, the session will be encrypted.
+        #--------------------------------------------------------------------------
 
-    #--------------------------------------------------------------------------
-    # Session File Path
-    #--------------------------------------------------------------------------
-    # This value defines the directory path where session files will be stored
-    # when using the file driver.
-    #--------------------------------------------------------------------------
+        encrypt = env('SESSION_ENCRYPT', False),
 
-    'files' : storage_path('framework/sessions'),
+        #--------------------------------------------------------------------------
+        # Session File Path
+        #--------------------------------------------------------------------------
+        # This value defines the directory path where session files will be stored
+        # when using the file driver.
+        #--------------------------------------------------------------------------
 
-    #--------------------------------------------------------------------------
-    # Session Cookie Configuration
-    #--------------------------------------------------------------------------
-    # This section configures the properties of the session cookie.
-    #--------------------------------------------------------------------------
+        files = storage_path('framework/sessions'),
 
-    'cookie' : {
-        'name' : env('SESSION_COOKIE', f"{str(env('APP_NAME', 'flaskavel')).lower()}_session"),
-        'path' : env('SESSION_PATH', '/'),
-        'domain' : env('SESSION_DOMAIN'),
-        'secure' : env('SESSION_SECURE_COOKIE'),
-        'http_only' : env('SESSION_HTTP_ONLY', True),
-        'same_site' : env('SESSION_SAME_SITE', 'lax'),
-    }
+        #--------------------------------------------------------------------------
+        # Session Cookie Configuration
+        #--------------------------------------------------------------------------
+        # This section configures the properties of the session cookie.
+        #--------------------------------------------------------------------------
 
-}
+        cookie = Cookie(
+            name=env('SESSION_COOKIE', f"{str(env('APP_NAME', 'flaskavel')).lower()}_session"),
+            path=env('SESSION_PATH', '/'),
+            domain=env('SESSION_DOMAIN'),
+            secure=env('SESSION_SECURE_COOKIE'),
+            http_only=env('SESSION_HTTP_ONLY', True),
+            same_site=env('SESSION_SAME_SITE', 'lax')
+        )
+    )
