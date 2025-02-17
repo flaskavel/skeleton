@@ -1,8 +1,8 @@
-from flaskavel.luminate.config.dataclass.database import Database, Connections, Sqlite, Mysql, Pgsql, Oracle
-from flaskavel.luminate.contracts.config.config_interface import IConfig
-from flaskavel.luminate.bootstrap.register import register
-from flaskavel.luminate.facades.paths import database_path
-from flaskavel.luminate.facades.environment import env
+from orionis.luminate.config.dataclass.database import Database, Connections, Sqlite, Mysql, Pgsql, Oracle
+from orionis.luminate.contracts.config.config_interface import IConfig
+from orionis.luminate.bootstrap.register import register
+from orionis.luminate.facades.paths import database_path
+from orionis.luminate.facades.environment import env
 
 @register.config
 class Config(IConfig):
@@ -58,7 +58,7 @@ class Config(IConfig):
                 url=env('DB_URL'),
                 host=env('DB_HOST', '127.0.0.1'),
                 port=env('DB_PORT', '3306'),
-                database=env('DB_DATABASE', 'flaskavel'),
+                database=env('DB_DATABASE', 'orionis'),
                 username=env('DB_USERNAME', 'root'),
                 password=env('DB_PASSWORD', ''),
                 unix_socket=env('DB_SOCKET', ''),
@@ -82,7 +82,7 @@ class Config(IConfig):
                 url=env('DB_URL'),
                 host=env('DB_HOST', '127.0.0.1'),
                 port=env('DB_PORT', '5432'),
-                database=env('DB_DATABASE', 'flaskavel'),
+                database=env('DB_DATABASE', 'orionis'),
                 username=env('DB_USERNAME', 'root'),
                 password=env('DB_PASSWORD', ''),
                 charset=env('DB_CHARSET', 'utf8'),

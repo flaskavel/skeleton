@@ -1,8 +1,8 @@
-from flaskavel.luminate.config.dataclass.filesystems import Filesystems, Disks, Local, Public, AWSS3
-from flaskavel.luminate.contracts.config.config_interface import IConfig
-from flaskavel.luminate.bootstrap.register import register
-from flaskavel.luminate.facades.paths import storage_path
-from flaskavel.luminate.facades.environment import env
+from orionis.luminate.config.dataclass.filesystems import Filesystems, Disks, Local, Public, AWSS3
+from orionis.luminate.contracts.config.config_interface import IConfig
+from orionis.luminate.bootstrap.register import register
+from orionis.luminate.facades.paths import storage_path
+from orionis.luminate.facades.environment import env
 
 @register.config
 class Config(IConfig):
@@ -48,7 +48,7 @@ class Config(IConfig):
 
             public = Public(
                 path=storage_path('app/public'),
-                slug='static'
+                slug='/'
             ),
 
             #----------------------------------------------------------------------

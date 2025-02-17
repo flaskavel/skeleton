@@ -1,7 +1,7 @@
-from flaskavel.luminate.config.dataclass.queue import Queue, Database, Connections
-from flaskavel.luminate.contracts.config.config_interface import IConfig
-from flaskavel.luminate.bootstrap.register import register
-from flaskavel.luminate.facades.environment import env
+from orionis.luminate.config.dataclass.queue import Queue, Database, Connections
+from orionis.luminate.contracts.config.config_interface import IConfig
+from orionis.luminate.bootstrap.register import register
+from orionis.luminate.facades.environment import env
 
 @register.config
 class Config(IConfig):

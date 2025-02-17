@@ -1,6 +1,6 @@
 from datetime import datetime, timedelta
-from flaskavel.luminate.console.tasks.scheduler import Schedule
-from flaskavel.luminate.contracts.console.task_manager_interface import ITaskManager
+from orionis.luminate.console.tasks.scheduler import Schedule
+from orionis.luminate.contracts.console.task_manager_interface import ITaskManager
 
 class TaskManager(ITaskManager):
     """

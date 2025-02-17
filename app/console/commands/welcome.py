@@ -1,13 +1,13 @@
-from flaskavel.luminate.console.base.command import BaseCommand
-from flaskavel.luminate.console.register import register
+from orionis.luminate.console.base.command import BaseCommand
+from orionis.luminate.console.register import register
 
 @register.command
 class WelcomeCommand(BaseCommand):
     """
-    A command class for Flaskavel that demonstrates basic functionality.
+    A command class for Orionis that demonstrates basic functionality.
 
     This class defines a custom console command that can be executed
-    from the command line interface (CLI) of a Flaskavel application. The
+    from the command line interface (CLI) of a Orionis application. The
     command `app:example` will display a greeting message.
 
     Attributes
@@ -30,7 +30,7 @@ class WelcomeCommand(BaseCommand):
     str : The command signature.
 
     This is the unique string that represents the command when invoking it from the CLI.
-    It is used for registering the command in the Flaskavel framework.
+    It is used for registering the command in the Orionis framework.
     """
 
     description = 'Greets from the console'
@@ -78,5 +78,5 @@ class WelcomeCommand(BaseCommand):
             This method does not return any value, but performs side effects such as
             printing a message to the console.
         """
-        self.info(f'Welcome to Flaskavel Framework!')
+        self.info(f'Welcome to Orionis Framework!')
 

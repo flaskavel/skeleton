@@ -1,1 +1,1 @@
-flaskavel>=1.31.0
+orionis>=0.2.0

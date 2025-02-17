@@ -1,8 +1,8 @@
-from flaskavel.luminate.config.dataclass.session import Session, Cookie
-from flaskavel.luminate.contracts.config.config_interface import IConfig
-from flaskavel.luminate.bootstrap.register import register
-from flaskavel.luminate.facades.paths import storage_path
-from flaskavel.luminate.facades.environment import env
+from orionis.luminate.config.dataclass.session import Session, Cookie
+from orionis.luminate.contracts.config.config_interface import IConfig
+from orionis.luminate.bootstrap.register import register
+from orionis.luminate.facades.paths import storage_path
+from orionis.luminate.facades.environment import env
 
 @register.config
 class Config(IConfig):
@@ -62,7 +62,7 @@ class Config(IConfig):
         #--------------------------------------------------------------------------
 
         cookie = Cookie(
-            name=env('SESSION_COOKIE', f"{str(env('APP_NAME', 'flaskavel')).lower()}_session"),
+            name=env('SESSION_COOKIE', None),
             path=env('SESSION_PATH', '/'),
             domain=env('SESSION_DOMAIN'),
             secure=env('SESSION_SECURE_COOKIE'),

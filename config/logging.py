@@ -1,8 +1,8 @@
-from flaskavel.luminate.config.dataclass.logging import Logging, Channels, Single, Daily, Chunked
-from flaskavel.luminate.contracts.config.config_interface import IConfig
-from flaskavel.luminate.bootstrap.register import register
-from flaskavel.luminate.facades.paths import storage_path
-from flaskavel.luminate.facades.environment import env
+from orionis.luminate.config.dataclass.logging import Logging, Channels, Single, Daily, Chunked
+from orionis.luminate.contracts.config.config_interface import IConfig
+from orionis.luminate.bootstrap.register import register
+from orionis.luminate.facades.paths import storage_path
+from orionis.luminate.facades.environment import env
 
 @register.config
 class Config(IConfig):
@@ -35,7 +35,7 @@ class Config(IConfig):
             #----------------------------------------------------------------------
 
             single = Single(
-                path=storage_path('logs/flaskavel.log'),
+                path=storage_path('logs/orionis.log'),
                 level=env('LOG_LEVEL', 'debug'),
                 stream=False
             ),
@@ -49,7 +49,7 @@ class Config(IConfig):
             #----------------------------------------------------------------------
 
             daily = Daily(
-                path=storage_path('logs/flaskavel.log'),
+                path=storage_path('logs/orionis.log'),
                 level=env('LOG_LEVEL', 'debug'),
                 days=env('LOG_DAILY_DAYS', 14),
                 stream=False
@@ -64,7 +64,7 @@ class Config(IConfig):
             #----------------------------------------------------------------------
 
             chunked = Chunked(
-                path=storage_path('logs/flaskavel.log'),
+                path=storage_path('logs/orionis.log'),
                 level=env('LOG_LEVEL', 'debug'),
                 max_size=env('LOG_CHUNKED_SIZE', 1000000),
                 max_files=env('LOG_CHUNKED_FILES', 5),

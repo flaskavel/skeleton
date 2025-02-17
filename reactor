@@ -1,4 +1,4 @@
-from flaskavel.luminate.console.kernel import CLIKernel
+from orionis.luminate.console.kernel import CLIKernel
 import sys
 
 if __name__ == "__main__":
