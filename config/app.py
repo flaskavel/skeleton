@@ -1,9 +1,7 @@
-from orionis.luminate.contracts.config.config_interface import IConfig
-from orionis.luminate.bootstrap.register import register
-from orionis.luminate.config.dataclass.app import App
-from orionis.luminate.facades.environment import env
+from orionis.contracts.config.i_config import IConfig
+from orionis.luminate.config.app import App
+from orionis.luminate.facades.environment.environment_facade import env
 
-@register.config
 class Config(IConfig):
 
     config = App(
@@ -79,6 +77,14 @@ class Config(IConfig):
         #--------------------------------------------------------------------------
 
         cipher = 'AES-256-GCM',
-        key = env('APP_KEY')
+        key = env('APP_KEY'),
 
+        #--------------------------------------------------------------------------
+        # Additional Values
+        #--------------------------------------------------------------------------
+        # If your application requires additional configurations, you can define
+        # them in this dictionary.
+        #--------------------------------------------------------------------------
+
+        custom = {}
     )

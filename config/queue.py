@@ -1,9 +1,7 @@
-from orionis.luminate.config.dataclass.queue import Queue, Database, Connections
-from orionis.luminate.contracts.config.config_interface import IConfig
-from orionis.luminate.bootstrap.register import register
-from orionis.luminate.facades.environment import env
+from orionis.luminate.config.queue import Connections, Database, Queue
+from orionis.contracts.config.i_config import IConfig
+from orionis.luminate.facades.environment.environment_facade import env
 
-@register.config
 class Config(IConfig):
 
     config = Queue(
@@ -34,8 +32,17 @@ class Config(IConfig):
                 batching = env('DB_QUEUE_BATCHING', 'job_batches'),
                 failed = env('DB_QUEUE_FAILED', 'job_failures'),
                 queue = env('DB_QUEUE', 'default'),
-                retry_after = int(env('DB_QUEUE_RETRY_AFTER', 90)),
+                retry_after = env('DB_QUEUE_RETRY_AFTER', 90),
                 after_commit = False
             )
-        )
+        ),
+
+        #--------------------------------------------------------------------------
+        # Additional Values
+        #--------------------------------------------------------------------------
+        # If your application requires additional configurations, you can define
+        # them in this dictionary.
+        #--------------------------------------------------------------------------
+
+        custom = {}
     )

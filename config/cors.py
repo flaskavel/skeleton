@@ -1,8 +1,6 @@
-from orionis.luminate.contracts.config.config_interface import IConfig
-from orionis.luminate.bootstrap.register import register
-from orionis.luminate.config.dataclass.cors import Cors
+from orionis.contracts.config.i_config import IConfig
+from orionis.luminate.config.cors import Cors
 
-@register.config
 class Config(IConfig):
 
     config = Cors(
@@ -56,5 +54,14 @@ class Config(IConfig):
         #--------------------------------------------------------------------------
 
         max_age = None,
+
+        #--------------------------------------------------------------------------
+        # Additional Values
+        #--------------------------------------------------------------------------
+        # If your application requires additional configurations, you can define
+        # them in this dictionary.
+        #--------------------------------------------------------------------------
+
+        custom = {}
 
     )

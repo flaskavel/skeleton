@@ -1,10 +1,8 @@
-from orionis.luminate.config.dataclass.filesystems import Filesystems, Disks, Local, Public, AWSS3
-from orionis.luminate.contracts.config.config_interface import IConfig
-from orionis.luminate.bootstrap.register import register
-from orionis.luminate.facades.paths import storage_path
-from orionis.luminate.facades.environment import env
+from orionis.contracts.config.i_config import IConfig
+from orionis.luminate.config.filesystems import AWSS3, Disks, Filesystems, Local, Public
+from orionis.luminate.facades.environment.environment_facade import env
+from orionis.luminate.facades.files.path_facade import storage_path
 
-@register.config
 class Config(IConfig):
 
     config = Filesystems(
@@ -69,5 +67,14 @@ class Config(IConfig):
                 use_path_style_endpoint=env('AWS_USE_PATH_STYLE_ENDPOINT', False),
                 throw=False
             )
-        )
+        ),
+
+        #--------------------------------------------------------------------------
+        # Additional Values
+        #--------------------------------------------------------------------------
+        # If your application requires additional configurations, you can define
+        # them in this dictionary.
+        #--------------------------------------------------------------------------
+
+        custom = {}
     )

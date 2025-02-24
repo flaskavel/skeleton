@@ -1,10 +1,8 @@
-from orionis.luminate.config.dataclass.session import Session, Cookie
-from orionis.luminate.contracts.config.config_interface import IConfig
-from orionis.luminate.bootstrap.register import register
-from orionis.luminate.facades.paths import storage_path
-from orionis.luminate.facades.environment import env
+from orionis.luminate.config.session import Cookie, Session
+from orionis.contracts.config.i_config import IConfig
+from orionis.luminate.facades.environment.environment_facade import env
+from orionis.luminate.facades.files.path_facade import storage_path
 
-@register.config
 class Config(IConfig):
 
     config = Session(
@@ -68,5 +66,14 @@ class Config(IConfig):
             secure=env('SESSION_SECURE_COOKIE'),
             http_only=env('SESSION_HTTP_ONLY', True),
             same_site=env('SESSION_SAME_SITE', 'lax')
-        )
+        ),
+
+        #--------------------------------------------------------------------------
+        # Additional Values
+        #--------------------------------------------------------------------------
+        # If your application requires additional configurations, you can define
+        # them in this dictionary.
+        #--------------------------------------------------------------------------
+
+        custom = {}
     )

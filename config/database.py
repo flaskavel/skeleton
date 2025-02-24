@@ -1,10 +1,8 @@
-from orionis.luminate.config.dataclass.database import Database, Connections, Sqlite, Mysql, Pgsql, Oracle
-from orionis.luminate.contracts.config.config_interface import IConfig
-from orionis.luminate.bootstrap.register import register
-from orionis.luminate.facades.paths import database_path
-from orionis.luminate.facades.environment import env
+from orionis.contracts.config.i_config import IConfig
+from orionis.luminate.config.database import Connections, Database, Mysql, Oracle, Pgsql, Sqlite
+from orionis.luminate.facades.environment.environment_facade import env
+from orionis.luminate.facades.files.path_facade import database_path
 
-@register.config
 class Config(IConfig):
 
     config = Database(
@@ -110,5 +108,14 @@ class Config(IConfig):
                 service=env('DB_SERVICE'),
                 sid=env('DB_SID')
             )
-        )
+        ),
+
+        #--------------------------------------------------------------------------
+        # Additional Values
+        #--------------------------------------------------------------------------
+        # If your application requires additional configurations, you can define
+        # them in this dictionary.
+        #--------------------------------------------------------------------------
+
+        custom = {}
     )

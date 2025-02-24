@@ -1,6 +1,6 @@
 from datetime import datetime, timedelta
-from orionis.luminate.console.tasks.scheduler import Schedule
-from orionis.luminate.contracts.console.task_manager_interface import ITaskManager
+from orionis.luminate.facades.commands.scheduler_facade import Schedule
+from orionis.contracts.console.i_task_manager import ITaskManager
 
 class TaskManager(ITaskManager):
     """

@@ -1,7 +1,5 @@
 from orionis.luminate.console.base.command import BaseCommand
-from orionis.luminate.console.register import register
 
-@register.command
 class WelcomeCommand(BaseCommand):
     """
     A command class for Orionis that demonstrates basic functionality.

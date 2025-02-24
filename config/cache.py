@@ -1,10 +1,8 @@
-from orionis.luminate.config.dataclass.cache import Cache, Stores, File
-from orionis.luminate.contracts.config.config_interface import IConfig
-from orionis.luminate.bootstrap.register import register
-from orionis.luminate.facades.paths import storage_path
-from orionis.luminate.facades.environment import env
+from orionis.contracts.config.i_config import IConfig
+from orionis.luminate.config.cache import Cache, Stores, File
+from orionis.luminate.facades.environment.environment_facade import env
+from orionis.luminate.facades.files.path_facade import storage_path
 
-@register.config
 class Config(IConfig):
 
     config = Cache(
@@ -37,5 +35,14 @@ class Config(IConfig):
                 path = storage_path('framework/cache/data')
             )
 
-        )
+        ),
+
+        #--------------------------------------------------------------------------
+        # Additional Values
+        #--------------------------------------------------------------------------
+        # If your application requires additional configurations, you can define
+        # them in this dictionary.
+        #--------------------------------------------------------------------------
+
+        custom = {}
     )

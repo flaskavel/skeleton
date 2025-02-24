@@ -1,13 +1,17 @@
-from orionis.luminate.contracts.config.config_interface import IConfig
-from orionis.luminate.bootstrap.register import register
-from orionis.luminate.config.dataclass.auth import Auth
-from orionis.luminate.facades.environment import env
+from orionis.contracts.config.i_config import IConfig
+from orionis.luminate.config.auth import Auth
 
-@register.config
 class Config(IConfig):
 
     config = Auth(
 
-        # ...
+        #--------------------------------------------------------------------------
+        # Additional Values
+        #--------------------------------------------------------------------------
+        # If your application requires additional configurations, you can define
+        # them in this dictionary.
+        #--------------------------------------------------------------------------
+
+        custom = {}
 
     )
