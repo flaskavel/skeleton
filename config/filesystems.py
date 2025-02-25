@@ -1,4 +1,4 @@
-from orionis.contracts.config.i_config import IConfig
+from orionis.luminate.contracts.config.i_config import IConfig
 from orionis.luminate.config.filesystems import AWSS3, Disks, Filesystems, Local, Public
 from orionis.luminate.facades.environment.environment_facade import env
 from orionis.luminate.facades.files.path_facade import storage_path

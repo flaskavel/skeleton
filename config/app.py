@@ -1,4 +1,4 @@
-from orionis.contracts.config.i_config import IConfig
+from orionis.luminate.contracts.config.i_config import IConfig
 from orionis.luminate.config.app import App
 from orionis.luminate.facades.environment.environment_facade import env
 

@@ -1,4 +1,4 @@
-from orionis.contracts.config.i_config import IConfig
+from orionis.luminate.contracts.config.i_config import IConfig
 from orionis.luminate.config.cache import Cache, Stores, File
 from orionis.luminate.facades.environment.environment_facade import env
 from orionis.luminate.facades.files.path_facade import storage_path

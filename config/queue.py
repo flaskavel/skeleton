@@ -1,5 +1,5 @@
 from orionis.luminate.config.queue import Connections, Database, Queue
-from orionis.contracts.config.i_config import IConfig
+from orionis.luminate.contracts.config.i_config import IConfig
 from orionis.luminate.facades.environment.environment_facade import env
 
 class Config(IConfig):

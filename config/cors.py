@@ -1,4 +1,4 @@
-from orionis.contracts.config.i_config import IConfig
+from orionis.luminate.contracts.config.i_config import IConfig
 from orionis.luminate.config.cors import Cors
 
 class Config(IConfig):

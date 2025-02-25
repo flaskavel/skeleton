@@ -1,4 +1,4 @@
-from orionis.contracts.config.i_config import IConfig
+from orionis.luminate.contracts.config.i_config import IConfig
 from orionis.luminate.config.logging import Stack, Hourly, Daily, Weekly, Monthly, Chunked, Channels, Logging
 from orionis.luminate.facades.environment.environment_facade import env
 from orionis.luminate.facades.files.path_facade import storage_path
@@ -14,7 +14,7 @@ class Config(IConfig):
         # It specifies which log channel to use for logging. The 'single' channel is
         # used by default, meaning all logs are written to a single log file.
         #----------------------------------------------------------------------
-        default = env('LOG_CHANNEL', 'chunked'),
+        default = env('LOG_CHANNEL', 'stack'),
 
         #----------------------------------------------------------------------
         # Logging Channels

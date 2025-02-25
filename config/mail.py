@@ -1,5 +1,5 @@
 from orionis.luminate.config.mail import Mail, Mailers, Smtp, File
-from orionis.contracts.config.i_config import IConfig
+from orionis.luminate.contracts.config.i_config import IConfig
 from orionis.luminate.facades.environment.environment_facade import env
 from orionis.luminate.facades.files.path_facade import storage_path
 
