@@ -1,6 +1,6 @@
-from orionis.luminate.contracts.config.i_config import IConfig
+from orionis.luminate.contracts.config.config import IConfig
 from orionis.luminate.config.database import Connections, Database, Mysql, Oracle, Pgsql, Sqlite
-from orionis.luminate.facades.environment.environment_facade import env
+from orionis.luminate.services.environment.environment_service import env
 from orionis.luminate.facades.files.path_facade import database_path
 
 class Config(IConfig):
